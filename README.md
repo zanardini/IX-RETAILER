@@ -1,5 +1,5 @@
 # IX-RETAILER
-[![IX-RETAILER](https://raw.githubusercontent.com/zanardini/IX-FE/master/Logo-IX.RETAILER.png)](https://www.arxivar.it)
+[![IX-RETAILER](https://raw.githubusercontent.com/zanardini/IX-RETAILER/master/Logo-IX.RETAILER.png)](https://www.arxivar.it)
 
 # What is IX-RETAILER?
 IX is the service platform of Able Tech: https://ix.arxivar.it/

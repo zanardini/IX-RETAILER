@@ -25,54 +25,38 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// FasciaIxResponse
+    /// FasceIxResponse
     /// </summary>
     [DataContract]
-    public partial class FasciaIxResponse :  IEquatable<FasciaIxResponse>, IValidatableObject
+    public partial class FasceIxResponse :  IEquatable<FasceIxResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FasciaIxResponse" /> class.
+        /// Initializes a new instance of the <see cref="FasceIxResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected FasciaIxResponse() { }
+        protected FasceIxResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="FasciaIxResponse" /> class.
+        /// Initializes a new instance of the <see cref="FasceIxResponse" /> class.
         /// </summary>
-        /// <param name="fascia">fascia (required).</param>
-        /// <param name="descrizione">descrizione (required).</param>
-        public FasciaIxResponse(int? fascia = default(int?), string descrizione = default(string))
+        /// <param name="fasceIx">fasceIx (required).</param>
+        public FasceIxResponse(List<FasciaIxResponse> fasceIx = default(List<FasciaIxResponse>))
         {
-            // to ensure "fascia" is required (not null)
-            if (fascia == null)
+            // to ensure "fasceIx" is required (not null)
+            if (fasceIx == null)
             {
-                throw new InvalidDataException("fascia is a required property for FasciaIxResponse and cannot be null");
+                throw new InvalidDataException("fasceIx is a required property for FasceIxResponse and cannot be null");
             }
             else
             {
-                this.Fascia = fascia;
-            }
-            // to ensure "descrizione" is required (not null)
-            if (descrizione == null)
-            {
-                throw new InvalidDataException("descrizione is a required property for FasciaIxResponse and cannot be null");
-            }
-            else
-            {
-                this.Descrizione = descrizione;
+                this.FasceIx = fasceIx;
             }
         }
         
         /// <summary>
-        /// Gets or Sets Fascia
+        /// Gets or Sets FasceIx
         /// </summary>
-        [DataMember(Name="fascia", EmitDefaultValue=false)]
-        public int? Fascia { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Descrizione
-        /// </summary>
-        [DataMember(Name="descrizione", EmitDefaultValue=false)]
-        public string Descrizione { get; set; }
+        [DataMember(Name="fasceIx", EmitDefaultValue=false)]
+        public List<FasciaIxResponse> FasceIx { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -81,9 +65,8 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class FasciaIxResponse {\n");
-            sb.Append("  Fascia: ").Append(Fascia).Append("\n");
-            sb.Append("  Descrizione: ").Append(Descrizione).Append("\n");
+            sb.Append("class FasceIxResponse {\n");
+            sb.Append("  FasceIx: ").Append(FasceIx).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -104,29 +87,24 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FasciaIxResponse);
+            return this.Equals(input as FasceIxResponse);
         }
 
         /// <summary>
-        /// Returns true if FasciaIxResponse instances are equal
+        /// Returns true if FasceIxResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of FasciaIxResponse to be compared</param>
+        /// <param name="input">Instance of FasceIxResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FasciaIxResponse input)
+        public bool Equals(FasceIxResponse input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Fascia == input.Fascia ||
-                    (this.Fascia != null &&
-                    this.Fascia.Equals(input.Fascia))
-                ) && 
-                (
-                    this.Descrizione == input.Descrizione ||
-                    (this.Descrizione != null &&
-                    this.Descrizione.Equals(input.Descrizione))
+                    this.FasceIx == input.FasceIx ||
+                    this.FasceIx != null &&
+                    this.FasceIx.SequenceEqual(input.FasceIx)
                 );
         }
 
@@ -139,10 +117,8 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Fascia != null)
-                    hashCode = hashCode * 59 + this.Fascia.GetHashCode();
-                if (this.Descrizione != null)
-                    hashCode = hashCode * 59 + this.Descrizione.GetHashCode();
+                if (this.FasceIx != null)
+                    hashCode = hashCode * 59 + this.FasceIx.GetHashCode();
                 return hashCode;
             }
         }

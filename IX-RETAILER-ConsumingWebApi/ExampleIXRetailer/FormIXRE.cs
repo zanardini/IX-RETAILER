@@ -118,11 +118,6 @@ namespace ExampleIXRetailer
 
 
 
-            //Modifica External ID
-            contrattiApi.UpdateExternalId(identificativoContratto, new IO.Swagger.Model.UpdateContrattoExternalIdRequest("Mio id Esterno BIS"), _authToken);
-
-            //Modifica descrizione contratto
-            contrattiApi.UpdateDescrizione(identificativoContratto, new IO.Swagger.Model.UpdateContrattoDescrizioneRequest("Mia descrizione BIS"), _authToken);
 
             //???
             //contrattiApi.SaveContratto(identificativoContratto, new IO.Swagger.Model.save(IO.Swagger.Model.ContrattoSaveRequest.TipoSalvataggioEnum.CREA,, _authToken);

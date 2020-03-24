@@ -25,10 +25,10 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// AooModuloIxCeRequest
+    /// AooModuloIxRequest
     /// </summary>
     [DataContract]
-    public partial class AooModuloIxCeRequest :  IEquatable<AooModuloIxCeRequest>, IValidatableObject
+    public partial class AooModuloIxRequest :  IEquatable<AooModuloIxRequest>, IValidatableObject
     {
         /// <summary>
         /// Defines TipoFirma
@@ -68,59 +68,85 @@ namespace IO.Swagger.Model
         [DataMember(Name="tipoFirma", EmitDefaultValue=false)]
         public TipoFirmaEnum TipoFirma { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AooModuloIxCeRequest" /> class.
+        /// Defines TipoFattura
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TipoFatturaEnum
+        {
+            
+            /// <summary>
+            /// Enum XMLNONFIRMATO for value: XML_NON_FIRMATO
+            /// </summary>
+            [EnumMember(Value = "XML_NON_FIRMATO")]
+            XMLNONFIRMATO = 1,
+            
+            /// <summary>
+            /// Enum XMLFIRMATO for value: XML_FIRMATO
+            /// </summary>
+            [EnumMember(Value = "XML_FIRMATO")]
+            XMLFIRMATO = 2,
+            
+            /// <summary>
+            /// Enum PDF for value: PDF
+            /// </summary>
+            [EnumMember(Value = "PDF")]
+            PDF = 3
+        }
+
+        /// <summary>
+        /// Gets or Sets TipoFattura
+        /// </summary>
+        [DataMember(Name="tipoFattura", EmitDefaultValue=false)]
+        public TipoFatturaEnum TipoFattura { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AooModuloIxRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AooModuloIxCeRequest() { }
+        protected AooModuloIxRequest() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AooModuloIxCeRequest" /> class.
+        /// Initializes a new instance of the <see cref="AooModuloIxRequest" /> class.
         /// </summary>
         /// <param name="fascia">fascia.</param>
         /// <param name="fasciaAnniSuccessiva">fasciaAnniSuccessiva.</param>
         /// <param name="tipoFirma">tipoFirma (required).</param>
-        /// <param name="responsabileConservazione">responsabileConservazione.</param>
-        /// <param name="periodoImposta">periodoImposta.</param>
-        public AooModuloIxCeRequest(FasciaIxCeInfo fascia = default(FasciaIxCeInfo), FasciaIxCeInfo fasciaAnniSuccessiva = default(FasciaIxCeInfo), TipoFirmaEnum tipoFirma = default(TipoFirmaEnum), ResponsabileConservazioneInfo responsabileConservazione = default(ResponsabileConservazioneInfo), PeriodoImpostaInfo periodoImposta = default(PeriodoImpostaInfo))
+        /// <param name="tipoFattura">tipoFattura (required).</param>
+        public AooModuloIxRequest(int? fascia = default(int?), int? fasciaAnniSuccessiva = default(int?), TipoFirmaEnum tipoFirma = default(TipoFirmaEnum), TipoFatturaEnum tipoFattura = default(TipoFatturaEnum))
         {
             // to ensure "tipoFirma" is required (not null)
             if (tipoFirma == null)
             {
-                throw new InvalidDataException("tipoFirma is a required property for AooModuloIxCeRequest and cannot be null");
+                throw new InvalidDataException("tipoFirma is a required property for AooModuloIxRequest and cannot be null");
             }
             else
             {
                 this.TipoFirma = tipoFirma;
             }
+            // to ensure "tipoFattura" is required (not null)
+            if (tipoFattura == null)
+            {
+                throw new InvalidDataException("tipoFattura is a required property for AooModuloIxRequest and cannot be null");
+            }
+            else
+            {
+                this.TipoFattura = tipoFattura;
+            }
             this.Fascia = fascia;
             this.FasciaAnniSuccessiva = fasciaAnniSuccessiva;
-            this.ResponsabileConservazione = responsabileConservazione;
-            this.PeriodoImposta = periodoImposta;
         }
         
         /// <summary>
         /// Gets or Sets Fascia
         /// </summary>
         [DataMember(Name="fascia", EmitDefaultValue=false)]
-        public FasciaIxCeInfo Fascia { get; set; }
+        public int? Fascia { get; set; }
 
         /// <summary>
         /// Gets or Sets FasciaAnniSuccessiva
         /// </summary>
         [DataMember(Name="fasciaAnniSuccessiva", EmitDefaultValue=false)]
-        public FasciaIxCeInfo FasciaAnniSuccessiva { get; set; }
+        public int? FasciaAnniSuccessiva { get; set; }
 
 
-        /// <summary>
-        /// Gets or Sets ResponsabileConservazione
-        /// </summary>
-        [DataMember(Name="responsabileConservazione", EmitDefaultValue=false)]
-        public ResponsabileConservazioneInfo ResponsabileConservazione { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PeriodoImposta
-        /// </summary>
-        [DataMember(Name="periodoImposta", EmitDefaultValue=false)]
-        public PeriodoImpostaInfo PeriodoImposta { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -129,12 +155,11 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AooModuloIxCeRequest {\n");
+            sb.Append("class AooModuloIxRequest {\n");
             sb.Append("  Fascia: ").Append(Fascia).Append("\n");
             sb.Append("  FasciaAnniSuccessiva: ").Append(FasciaAnniSuccessiva).Append("\n");
             sb.Append("  TipoFirma: ").Append(TipoFirma).Append("\n");
-            sb.Append("  ResponsabileConservazione: ").Append(ResponsabileConservazione).Append("\n");
-            sb.Append("  PeriodoImposta: ").Append(PeriodoImposta).Append("\n");
+            sb.Append("  TipoFattura: ").Append(TipoFattura).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,15 +180,15 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AooModuloIxCeRequest);
+            return this.Equals(input as AooModuloIxRequest);
         }
 
         /// <summary>
-        /// Returns true if AooModuloIxCeRequest instances are equal
+        /// Returns true if AooModuloIxRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of AooModuloIxCeRequest to be compared</param>
+        /// <param name="input">Instance of AooModuloIxRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AooModuloIxCeRequest input)
+        public bool Equals(AooModuloIxRequest input)
         {
             if (input == null)
                 return false;
@@ -185,14 +210,9 @@ namespace IO.Swagger.Model
                     this.TipoFirma.Equals(input.TipoFirma))
                 ) && 
                 (
-                    this.ResponsabileConservazione == input.ResponsabileConservazione ||
-                    (this.ResponsabileConservazione != null &&
-                    this.ResponsabileConservazione.Equals(input.ResponsabileConservazione))
-                ) && 
-                (
-                    this.PeriodoImposta == input.PeriodoImposta ||
-                    (this.PeriodoImposta != null &&
-                    this.PeriodoImposta.Equals(input.PeriodoImposta))
+                    this.TipoFattura == input.TipoFattura ||
+                    (this.TipoFattura != null &&
+                    this.TipoFattura.Equals(input.TipoFattura))
                 );
         }
 
@@ -211,10 +231,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.FasciaAnniSuccessiva.GetHashCode();
                 if (this.TipoFirma != null)
                     hashCode = hashCode * 59 + this.TipoFirma.GetHashCode();
-                if (this.ResponsabileConservazione != null)
-                    hashCode = hashCode * 59 + this.ResponsabileConservazione.GetHashCode();
-                if (this.PeriodoImposta != null)
-                    hashCode = hashCode * 59 + this.PeriodoImposta.GetHashCode();
+                if (this.TipoFattura != null)
+                    hashCode = hashCode * 59 + this.TipoFattura.GetHashCode();
                 return hashCode;
             }
         }

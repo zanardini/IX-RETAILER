@@ -62,14 +62,9 @@ OpenAPI spec version: v3.1
     <Compile Include="Api\AnagraficheContrattiApi.cs" />
     <Compile Include="Api\AoosApi.cs" />
     <Compile Include="Api\AuthorizationApi.cs" />
-    <Compile Include="Api\ClassiDocumentaliApi.cs" />
     <Compile Include="Api\ClienteApi.cs" />
     <Compile Include="Api\ContrattiApi.cs" />
-    <Compile Include="Api\ContrattoCentroServiziApi.cs" />
     <Compile Include="Api\ContrattoClienteFinaleApi.cs" />
-    <Compile Include="Api\ContrattoGruppoAziendeApi.cs" />
-    <Compile Include="Api\DatiCertificatoApi.cs" />
-    <Compile Include="Api\MetadatiApi.cs" />
     <Compile Include="Api\UtentiAooApi.cs" />
     <Compile Include="Api\UtentiApi.cs" />
     <Compile Include="Client\ApiClient.cs" />
@@ -86,6 +81,7 @@ OpenAPI spec version: v3.1
     <Compile Include="Model\AooModuliResponse.cs" />
     <Compile Include="Model\AooModuloIxCeRequest.cs" />
     <Compile Include="Model\AooModuloIxCeResponse.cs" />
+    <Compile Include="Model\AooModuloIxRequest.cs" />
     <Compile Include="Model\AooModuloResponse.cs" />
     <Compile Include="Model\AooRequest.cs" />
     <Compile Include="Model\AooResponse.cs" />
@@ -148,6 +144,7 @@ OpenAPI spec version: v3.1
     <Compile Include="Model\EsigibilitaIva.cs" />
     <Compile Include="Model\EsigibilitaIvaResponse.cs" />
     <Compile Include="Model\FasceIxCeResponse.cs" />
+    <Compile Include="Model\FasceIxResponse.cs" />
     <Compile Include="Model\FasciaIxCeInfo.cs" />
     <Compile Include="Model\FasciaIxPecInfo.cs" />
     <Compile Include="Model\FasciaIxResponse.cs" />

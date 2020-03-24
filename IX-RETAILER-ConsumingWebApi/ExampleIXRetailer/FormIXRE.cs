@@ -76,10 +76,15 @@ namespace ExampleIXRetailer
             var distributore = ditributori.FirstOrDefault(x => x.Nome == nomeDistributore);
 
             //Recupero le fasce IX FE disponibili
-            //???
+            List<IO.Swagger.Model.FasciaIxResponse> fasceIxFeResponse = anagraficheApi.GetFasceIxFeContrattoClienteFinale(_authToken).FasceIx;
+            foreach (var fasciaIxFe in fasceIxFeResponse)
+            {
+                var descrizione = fasciaIxFe.Descrizione;
+                var valore = fasciaIxFe.Fascia;
+            }
 
             //Recupero le fasce IX CE disponibili
-            var fasceIxCe = anagraficheApi.GetFasceIxCeContrattoClienteFinale("???", _authToken).FasceIxCe;
+            var fasceIxCe = anagraficheApi.GetFasceIxCeContrattoClienteFinale("IXCE", _authToken).FasceIxCe;
             foreach (var fasciaIxCe in fasceIxCe)
             {
                 var valore = fasciaIxCe.Valore;

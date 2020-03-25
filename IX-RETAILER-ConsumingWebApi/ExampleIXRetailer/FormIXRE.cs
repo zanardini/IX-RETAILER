@@ -58,12 +58,33 @@ namespace ExampleIXRetailer
         private void button1_Click(object sender, EventArgs e)
         {
 
+            // EndPoint per gestione anagrafiche (Distributori\Rivenditori)
+            IO.Swagger.Api.AnagraficheApi anagraficheApi = new IO.Swagger.Api.AnagraficheApi(_urlWebApiRetailer);
+
+            //EndPoint per la gestione del contratto in generale
+            IO.Swagger.Api.ContrattiApi contrattiApi = new IO.Swagger.Api.ContrattiApi(_urlWebApiRetailer);
+
+            //EndPoint per la gestione del contratto di tipo cliente finale
+            IO.Swagger.Api.ContrattoClienteFinaleApi contrattoClienteFinaleApi = new IO.Swagger.Api.ContrattoClienteFinaleApi(_urlWebApiRetailer);
+
+            //EndPoint per la gestione del cliente
+            IO.Swagger.Api.ClienteApi clienteApi = new IO.Swagger.Api.ClienteApi(_urlWebApiRetailer);
+
+            //EndPoint per la gestione dell'aoo
+            IO.Swagger.Api.AoosApi aoosApi = new IO.Swagger.Api.AoosApi(_urlWebApiRetailer);
+
+            //EndPoint per la gestione dell'utente
+            IO.Swagger.Api.UtentiApi utentiApi = new IO.Swagger.Api.UtentiApi(_urlWebApiRetailer);
+
+            //EndPoint per la gestione dell'associazione utente\aoo
+            IO.Swagger.Api.UtentiAooApi utentiAooApi = new IO.Swagger.Api.UtentiAooApi(_urlWebApiRetailer);
+
+            //EndPoint per la gestione degli elenchi di contratti
+            IO.Swagger.Api.AnagraficheContrattiApi anagraficheContrattiApi = new IO.Swagger.Api.AnagraficheContrattiApi(_urlWebApiRetailer);
+
+
             string nomeDistributore = "DISTRIBUTORE UNO";
             string nomeRivenditore = "RIVENDITORE UNO";
-
-            IO.Swagger.Api.ContrattiApi contrattiApi = new IO.Swagger.Api.ContrattiApi(_urlWebApiRetailer);
-            IO.Swagger.Api.ContrattoClienteFinaleApi contrattoClienteFinaleApi = new IO.Swagger.Api.ContrattoClienteFinaleApi(_urlWebApiRetailer);
-            IO.Swagger.Api.AnagraficheApi anagraficheApi = new IO.Swagger.Api.AnagraficheApi(_urlWebApiRetailer);
 
 
             //dato il mio utente connesso recupero i dati dei rivenditore per cui io posso lavorare
@@ -113,7 +134,7 @@ namespace ExampleIXRetailer
             var identificativoContratto = createContrattoResponse.Identificativo;
 
             // creo il cliente
-            IO.Swagger.Api.ClienteApi clienteApi = new IO.Swagger.Api.ClienteApi(_urlWebApiRetailer);
+
             IO.Swagger.Model.ClienteFinaleClienteRequest clienteFinaleClienteRequest = new IO.Swagger.Model.ClienteFinaleClienteRequest
                 (
                 "Identificativo cliente",  //???
@@ -123,7 +144,7 @@ namespace ExampleIXRetailer
             var identificativoCliente = contrattoClienteResponse.Identificativo;
 
             // creo l'Area Organizzativa Omogenea
-            IO.Swagger.Api.AoosApi aoosApi = new IO.Swagger.Api.AoosApi(_urlWebApiRetailer);
+
             IO.Swagger.Model.AooRequest aooRequest = new IO.Swagger.Model.AooRequest
                 (
                  new IO.Swagger.Model.SedeLegaleAoo("P.IVA", "Ragione Sociale", "Via", "Civico", "Comune", "email", "telefono"),
@@ -134,7 +155,6 @@ namespace ExampleIXRetailer
             IO.Swagger.Model.AooResponse aooResponse = aoosApi.InsertAoo(identificativoContratto, createAooRequest, _authToken);
             var identificativoAoo = aooResponse.Identificativo;
 
-            IO.Swagger.Api.UtentiApi utentiApi = new IO.Swagger.Api.UtentiApi(_urlWebApiRetailer);
             IO.Swagger.Model.ContrattoUtenteResponse contrattoUtenteResponse = utentiApi.InsertUtente(identificativoContratto, new IO.Swagger.Model.ContrattoUtenteRequest
                 (
                     "UserName",
@@ -147,10 +167,12 @@ namespace ExampleIXRetailer
             var identificativoUtente = contrattoUtenteResponse.Identificativo;
 
             //associo alla
-            IO.Swagger.Api.UtentiAooApi utentiAooApi = new IO.Swagger.Api.UtentiAooApi(_urlWebApiRetailer);
+
             List<IO.Swagger.Model.AooUtenteRequest> listaUtentiAoo = new List<IO.Swagger.Model.AooUtenteRequest>();
             listaUtentiAoo.Add(new IO.Swagger.Model.AooUtenteRequest(identificativoUtente, true, null, null));//???
             utentiAooApi.InsertAooUtenti(identificativoContratto, identificativoAoo, new IO.Swagger.Model.AooUtentiRequest(listaUtentiAoo), _authToken);
+
+
 
             //Download PDF del contratto
             Stream contrattoStream = contrattiApi.GetCartaceoContratto(identificativoContratto, _authToken);
@@ -188,6 +210,8 @@ namespace ExampleIXRetailer
                     break;
             }
 
+            //???
+            //anagraficheContrattiApi.ElencoContratti(rivenditore.Identificativo, distributore.Identificativo, _authToken, null, null, null, null, null, null);
 
         }
     }

@@ -107,34 +107,57 @@ namespace ExampleIXRetailer
             var descrizioneContratto = "Mio primo contratto";
             var idEsternoContratto = "Mio ID contratto";
 
-            //1. Crea un contratto cliente standard
+            //Creo un contratto cliente standard
             IO.Swagger.Model.CreateContrattoRequest createContrattoRequest = new IO.Swagger.Model.CreateContrattoRequest(descrizioneContratto, idEsternoContratto, rivenditore.Identificativo, distributore.Identificativo);
             IO.Swagger.Model.CreateContrattoResponse createContrattoResponse = contrattoClienteFinaleApi.CreateContrattoClienteFinale(createContrattoRequest, _authToken);
             var identificativoContratto = createContrattoResponse.Identificativo;
 
-            //2.Inizializza il cliente di un contratto cliente standard
-            //???
-            //IO.Swagger.Api.ClienteApi clienteApi = new IO.Swagger.Api.ClienteApi(_urlWebApiRetailer);
-            //IO.Swagger.Model.ClienteFinaleClienteRequest clienteFinaleClienteRequest = new IO.Swagger.Model.ClienteFinaleClienteRequest(???);
-            //IO.Swagger.Model.ContrattoClienteResponse contrattoClienteResponse = clienteApi.InsertForClienteFinale(identificativoContratto, clienteFinaleClienteRequest, _authToken);
+            // creo il cliente
+            IO.Swagger.Api.ClienteApi clienteApi = new IO.Swagger.Api.ClienteApi(_urlWebApiRetailer);
+            IO.Swagger.Model.ClienteFinaleClienteRequest clienteFinaleClienteRequest = new IO.Swagger.Model.ClienteFinaleClienteRequest
+                (
+                "Identificativo cliente",  //???
+                new IO.Swagger.Model.ClienteRequest("P.IVA", "Ragione Sociale", "Via", "Civico", "Comune", "Codice fiscale", "email", "telefono")
+                );
+            IO.Swagger.Model.ContrattoClienteResponse contrattoClienteResponse = clienteApi.InsertForClienteFinale(identificativoContratto, clienteFinaleClienteRequest, _authToken);
+            var identificativoCliente = contrattoClienteResponse.Identificativo;
 
-            //3.Aggiunge una Aoo ad un contratto cliente standard
-            //???
+            // creo l'Area Organizzativa Omogenea
+            IO.Swagger.Api.AoosApi aoosApi = new IO.Swagger.Api.AoosApi(_urlWebApiRetailer);
+            IO.Swagger.Model.AooRequest aooRequest = new IO.Swagger.Model.AooRequest
+                (
+                 new IO.Swagger.Model.SedeLegaleAoo("P.IVA", "Ragione Sociale", "Via", "Civico", "Comune", "email", "telefono"),
+                 new IO.Swagger.Model.DatiFiscaliAoo("Codice Fiscale", "Registro imprese", "Codice REA", "mail PEC"),
+                 new IO.Swagger.Model.LegaleRappresentanteAoo("Nome", "Cognome", "Codice fiscale", "Cittadinanza")
+                );
+            IO.Swagger.Model.CreateAooRequest createAooRequest = new IO.Swagger.Model.CreateAooRequest(identificativoCliente, aooRequest);
+            IO.Swagger.Model.AooResponse aooResponse = aoosApi.InsertAoo(identificativoContratto, createAooRequest, _authToken);
+            var identificativoAoo = aooResponse.Identificativo;
 
+            IO.Swagger.Api.UtentiApi utentiApi = new IO.Swagger.Api.UtentiApi(_urlWebApiRetailer);
+            IO.Swagger.Model.ContrattoUtenteResponse contrattoUtenteResponse = utentiApi.InsertUtente(identificativoContratto, new IO.Swagger.Model.ContrattoUtenteRequest
+                (
+                    "UserName",
+                    new IO.Swagger.Model.DatiGeneraliUtente("Nome", "Cognome", IO.Swagger.Model.DatiGeneraliUtente.SessoEnum.M, "Cittadidanza", "Comune di Nascita", false, "Paese Nascita Estero", "Comune Nascita Estero", new DateTime(1979, 10, 26)),
+                    new IO.Swagger.Model.DatiResidenzaUtente("Via", "Civico", "Comune di residenza"),
+                    new IO.Swagger.Model.DatiFiscaliUtente("Codice fiscale")
+                ),
+                _authToken
+            );
+            var identificativoUtente = contrattoUtenteResponse.Identificativo;
 
-
-
-            //???
-            //contrattiApi.SaveContratto(identificativoContratto, new IO.Swagger.Model.save(IO.Swagger.Model.ContrattoSaveRequest.TipoSalvataggioEnum.CREA,, _authToken);
-
-
+            //associo alla
+            IO.Swagger.Api.UtentiAooApi utentiAooApi = new IO.Swagger.Api.UtentiAooApi(_urlWebApiRetailer);
+            List<IO.Swagger.Model.AooUtenteRequest> listaUtentiAoo = new List<IO.Swagger.Model.AooUtenteRequest>();
+            listaUtentiAoo.Add(new IO.Swagger.Model.AooUtenteRequest(identificativoUtente, true, null, null));//???
+            utentiAooApi.InsertAooUtenti(identificativoContratto, identificativoAoo, new IO.Swagger.Model.AooUtentiRequest(listaUtentiAoo), _authToken);
 
             //Download PDF del contratto
             Stream contrattoStream = contrattiApi.GetCartaceoContratto(identificativoContratto, _authToken);
 
             //Upload del contratto PDF firmato
             contrattiApi.UploadControfirmato(identificativoContratto, contrattoStream, _authToken);
-            
+
             //Lettura dello stato di approvazione di un contratto
             IO.Swagger.Model.StatoContrattoResponse statoContrattoResponse = contrattiApi.GetStatoContratto(identificativoContratto, _authToken);
             switch (statoContrattoResponse.Stato)

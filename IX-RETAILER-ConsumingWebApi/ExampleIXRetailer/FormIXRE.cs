@@ -20,8 +20,6 @@ namespace ExampleIXRetailer
 
         private string _authToken;
 
-
-
         public FormIXRE()
         {
             InitializeComponent();
@@ -67,9 +65,6 @@ namespace ExampleIXRetailer
             //EndPoint per la gestione del contratto di tipo cliente finale
             IO.Swagger.Api.ContrattoClienteFinaleApi contrattoClienteFinaleApi = new IO.Swagger.Api.ContrattoClienteFinaleApi(_urlWebApiRetailer);
 
-            //EndPoint per la gestione del cliente
-            IO.Swagger.Api.ClienteApi clienteApi = new IO.Swagger.Api.ClienteApi(_urlWebApiRetailer);
-
             //EndPoint per la gestione dell'aoo
             IO.Swagger.Api.AoosApi aoosApi = new IO.Swagger.Api.AoosApi(_urlWebApiRetailer);
 
@@ -97,15 +92,15 @@ namespace ExampleIXRetailer
             var distributore = ditributori.FirstOrDefault(x => x.Nome == nomeDistributore);
 
             //Recupero le fasce IX FE disponibili
-            List<IO.Swagger.Model.FasciaIxResponse> fasceIxFeResponse = anagraficheApi.GetFasceIxFeContrattoClienteFinale(_authToken).FasceIx;
-            foreach (var fasciaIxFe in fasceIxFeResponse)
+            List<IO.Swagger.Model.FasciaIxResponse> fasceIxFe = anagraficheApi.GetFasceIxFeContrattoClienteFinale(_authToken).FasceIx;
+            foreach (var fasciaIxFe in fasceIxFe)
             {
                 var descrizione = fasciaIxFe.Descrizione;
                 var valore = fasciaIxFe.Fascia;
             }
 
             //Recupero le fasce IX CE disponibili
-            var fasceIxCe = anagraficheApi.GetFasceIxCeContrattoClienteFinale("IXCE", _authToken).FasceIxCe;
+            var fasceIxCe = anagraficheApi.GetFasceIxCeContrattoClienteFinale("SPAZIO", _authToken).FasceIxCe;
             foreach (var fasciaIxCe in fasceIxCe)
             {
                 var valore = fasciaIxCe.Valore;
@@ -133,28 +128,43 @@ namespace ExampleIXRetailer
             IO.Swagger.Model.CreateContrattoResponse createContrattoResponse = contrattoClienteFinaleApi.CreateContrattoClienteFinale(createContrattoRequest, _authToken);
             var identificativoContratto = createContrattoResponse.Identificativo;
 
-            // creo il cliente
-
-            IO.Swagger.Model.ClienteFinaleClienteRequest clienteFinaleClienteRequest = new IO.Swagger.Model.ClienteFinaleClienteRequest
-                (
-                "Identificativo cliente",  //???
-                new IO.Swagger.Model.ClienteRequest("P.IVA", "Ragione Sociale", "Via", "Civico", "Comune", "Codice fiscale", "email", "telefono")
-                );
-            IO.Swagger.Model.ContrattoClienteResponse contrattoClienteResponse = clienteApi.InsertForClienteFinale(identificativoContratto, clienteFinaleClienteRequest, _authToken);
-            var identificativoCliente = contrattoClienteResponse.Identificativo;
-
-            // creo l'Area Organizzativa Omogenea
-
+            // creo il cliente sul contratto. Direttamente IX RETAILER creerà anche l'AOO del cliente
             IO.Swagger.Model.AooRequest aooRequest = new IO.Swagger.Model.AooRequest
                 (
-                 new IO.Swagger.Model.SedeLegaleAoo("P.IVA", "Ragione Sociale", "Via", "Civico", "Comune", "email", "telefono"),
-                 new IO.Swagger.Model.DatiFiscaliAoo("Codice Fiscale", "Registro imprese", "Codice REA", "mail PEC"),
-                 new IO.Swagger.Model.LegaleRappresentanteAoo("Nome", "Cognome", "Codice fiscale", "Cittadinanza")
+                    new IO.Swagger.Model.SedeLegaleAoo("P.IVA", "Ragione Sociale", "Via", "Civico", "Comune", "email", "telefono"),
+                    new IO.Swagger.Model.DatiFiscaliAoo("Codice Fiscale", "Registro imprese", "Codice REA", "mail PEC"),
+                    new IO.Swagger.Model.LegaleRappresentanteAoo("Nome", "Cognome", "Codice fiscale", "Cittadinanza")
                 );
-            IO.Swagger.Model.CreateAooRequest createAooRequest = new IO.Swagger.Model.CreateAooRequest(identificativoCliente, aooRequest);
-            IO.Swagger.Model.AooResponse aooResponse = aoosApi.InsertAoo(identificativoContratto, createAooRequest, _authToken);
-            var identificativoAoo = aooResponse.Identificativo;
+            IO.Swagger.Model.CreateClienteStandardRequest createClienteStandardRequest = new IO.Swagger.Model.CreateClienteStandardRequest(aooRequest);
+            IO.Swagger.Model.ClienteStandardResponse clienteStandardResponse = contrattiApi.CreateClienteStandard(identificativoContratto, createClienteStandardRequest, _authToken);
+            var identificativoCliente = clienteStandardResponse.IdentificativoCliente;
+            var identificativoAoo = clienteStandardResponse.IdentificativoAoo;
 
+            //Aggiungo il modulo IX FE all'AOO
+            IO.Swagger.Model.AooModuloIxRequest moduloIxFe = new IO.Swagger.Model.AooModuloIxRequest
+                (
+                    fasceIxFe[0].Fascia,
+                    null,
+                    IO.Swagger.Model.AooModuloIxRequest.TipoFirmaEnum.AUTOMATICAINTERMEDIARIO,
+                    IO.Swagger.Model.AooModuloIxRequest.TipoFatturaEnum.XMLNONFIRMATO
+                );
+            aoosApi.InsertModuloIxFeAoo(identificativoContratto, identificativoAoo, moduloIxFe, _authToken);
+
+            //Aggiungo il modulo IX CE all'AOO
+            IO.Swagger.Model.AooModuloIxCeRequest moduloIxCe = new IO.Swagger.Model.AooModuloIxCeRequest
+                (
+                    fasceIxCe[0],
+                    null,
+                    IO.Swagger.Model.AooModuloIxCeRequest.TipoFirmaEnum.AUTOMATICAINTERMEDIARIO,
+                    new IO.Swagger.Model.ResponsabileConservazioneInfo("Nome", "Cognome", "Codice Fiscale", "Cittadinanza"),
+                    new IO.Swagger.Model.PeriodoImpostaInfo(new DateTime(2020, 01, 01), new DateTime(2020, 12, 31), new DateTime(2020, 03, 01))
+                );
+            aoosApi.InsertModuloIxCeAoo(identificativoContratto, identificativoAoo, moduloIxCe, _authToken);
+
+            //Recuopero da IX RETAILER l'elenco completo utenti
+            List<IO.Swagger.Model.AooUtenteDisponibileResponse> utentiDisponibii = utentiAooApi.GetUtentiDisponibili(identificativoContratto, _authToken).Utenti;
+
+            //Aggiunta di un utente al contratto
             IO.Swagger.Model.ContrattoUtenteResponse contrattoUtenteResponse = utentiApi.InsertUtente(identificativoContratto, new IO.Swagger.Model.ContrattoUtenteRequest
                 (
                     "UserName",
@@ -168,9 +178,9 @@ namespace ExampleIXRetailer
 
             //associo alla
 
-            List<IO.Swagger.Model.AooUtenteRequest> listaUtentiAoo = new List<IO.Swagger.Model.AooUtenteRequest>();
-            listaUtentiAoo.Add(new IO.Swagger.Model.AooUtenteRequest(identificativoUtente, true, null, null));//???
-            utentiAooApi.InsertAooUtenti(identificativoContratto, identificativoAoo, new IO.Swagger.Model.AooUtentiRequest(listaUtentiAoo), _authToken);
+            List<string> listaUtentiAoo = new List<string>();
+            listaUtentiAoo.Add(identificativoUtente);
+            utentiAooApi.InsertAooUtenti(identificativoContratto, identificativoAoo, listaUtentiAoo, _authToken);
 
 
 
@@ -210,9 +220,10 @@ namespace ExampleIXRetailer
                     break;
             }
 
-            //???
-            //anagraficheContrattiApi.ElencoContratti(rivenditore.Identificativo, distributore.Identificativo, _authToken, null, null, null, null, null, null);
-
+            //Recupero  l’elenco dei contratti associati al rivenditore e distributore
+            IO.Swagger.Model.ElencoContrattiResponse elencoContrattiResponse = anagraficheContrattiApi.ElencoContratti(Guid.Parse(rivenditore.Identificativo), Guid.Parse(distributore.Identificativo), _authToken, null, null, null, null, null, null);
+            List<IO.Swagger.Model.ContrattoInfo> contratti = elencoContrattiResponse.Contratti;
+            var ResultCount  = elencoContrattiResponse.ResultCount; 
         }
     }
 }

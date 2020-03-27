@@ -25,10 +25,10 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// AooResponse
+    /// ClienteStandardResponse
     /// </summary>
     [DataContract]
-    public partial class AooResponse :  IEquatable<AooResponse>, IValidatableObject
+    public partial class ClienteStandardResponse :  IEquatable<ClienteStandardResponse>, IValidatableObject
     {
         /// <summary>
         /// Defines ValidazionePartitaIva
@@ -62,36 +62,52 @@ namespace IO.Swagger.Model
         [DataMember(Name="validazionePartitaIva", EmitDefaultValue=false)]
         public ValidazionePartitaIvaEnum? ValidazionePartitaIva { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AooResponse" /> class.
+        /// Initializes a new instance of the <see cref="ClienteStandardResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AooResponse() { }
+        protected ClienteStandardResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AooResponse" /> class.
+        /// Initializes a new instance of the <see cref="ClienteStandardResponse" /> class.
         /// </summary>
-        /// <param name="identificativo">identificativo (required).</param>
+        /// <param name="identificativoCliente">identificativoCliente (required).</param>
+        /// <param name="identificativoAoo">identificativoAoo (required).</param>
         /// <param name="validazionePartitaIva">validazionePartitaIva.</param>
         /// <param name="ragioneSociale">ragioneSociale.</param>
-        public AooResponse(string identificativo = default(string), ValidazionePartitaIvaEnum? validazionePartitaIva = default(ValidazionePartitaIvaEnum?), string ragioneSociale = default(string))
+        public ClienteStandardResponse(string identificativoCliente = default(string), string identificativoAoo = default(string), ValidazionePartitaIvaEnum? validazionePartitaIva = default(ValidazionePartitaIvaEnum?), string ragioneSociale = default(string))
         {
-            // to ensure "identificativo" is required (not null)
-            if (identificativo == null)
+            // to ensure "identificativoCliente" is required (not null)
+            if (identificativoCliente == null)
             {
-                throw new InvalidDataException("identificativo is a required property for AooResponse and cannot be null");
+                throw new InvalidDataException("identificativoCliente is a required property for ClienteStandardResponse and cannot be null");
             }
             else
             {
-                this.Identificativo = identificativo;
+                this.IdentificativoCliente = identificativoCliente;
+            }
+            // to ensure "identificativoAoo" is required (not null)
+            if (identificativoAoo == null)
+            {
+                throw new InvalidDataException("identificativoAoo is a required property for ClienteStandardResponse and cannot be null");
+            }
+            else
+            {
+                this.IdentificativoAoo = identificativoAoo;
             }
             this.ValidazionePartitaIva = validazionePartitaIva;
             this.RagioneSociale = ragioneSociale;
         }
         
         /// <summary>
-        /// Gets or Sets Identificativo
+        /// Gets or Sets IdentificativoCliente
         /// </summary>
-        [DataMember(Name="identificativo", EmitDefaultValue=false)]
-        public string Identificativo { get; set; }
+        [DataMember(Name="IdentificativoCliente", EmitDefaultValue=false)]
+        public string IdentificativoCliente { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IdentificativoAoo
+        /// </summary>
+        [DataMember(Name="identificativoAoo", EmitDefaultValue=false)]
+        public string IdentificativoAoo { get; set; }
 
 
         /// <summary>
@@ -107,8 +123,9 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AooResponse {\n");
-            sb.Append("  Identificativo: ").Append(Identificativo).Append("\n");
+            sb.Append("class ClienteStandardResponse {\n");
+            sb.Append("  IdentificativoCliente: ").Append(IdentificativoCliente).Append("\n");
+            sb.Append("  IdentificativoAoo: ").Append(IdentificativoAoo).Append("\n");
             sb.Append("  ValidazionePartitaIva: ").Append(ValidazionePartitaIva).Append("\n");
             sb.Append("  RagioneSociale: ").Append(RagioneSociale).Append("\n");
             sb.Append("}\n");
@@ -131,24 +148,29 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AooResponse);
+            return this.Equals(input as ClienteStandardResponse);
         }
 
         /// <summary>
-        /// Returns true if AooResponse instances are equal
+        /// Returns true if ClienteStandardResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of AooResponse to be compared</param>
+        /// <param name="input">Instance of ClienteStandardResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AooResponse input)
+        public bool Equals(ClienteStandardResponse input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Identificativo == input.Identificativo ||
-                    (this.Identificativo != null &&
-                    this.Identificativo.Equals(input.Identificativo))
+                    this.IdentificativoCliente == input.IdentificativoCliente ||
+                    (this.IdentificativoCliente != null &&
+                    this.IdentificativoCliente.Equals(input.IdentificativoCliente))
+                ) && 
+                (
+                    this.IdentificativoAoo == input.IdentificativoAoo ||
+                    (this.IdentificativoAoo != null &&
+                    this.IdentificativoAoo.Equals(input.IdentificativoAoo))
                 ) && 
                 (
                     this.ValidazionePartitaIva == input.ValidazionePartitaIva ||
@@ -171,8 +193,10 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Identificativo != null)
-                    hashCode = hashCode * 59 + this.Identificativo.GetHashCode();
+                if (this.IdentificativoCliente != null)
+                    hashCode = hashCode * 59 + this.IdentificativoCliente.GetHashCode();
+                if (this.IdentificativoAoo != null)
+                    hashCode = hashCode * 59 + this.IdentificativoAoo.GetHashCode();
                 if (this.ValidazionePartitaIva != null)
                     hashCode = hashCode * 59 + this.ValidazionePartitaIva.GetHashCode();
                 if (this.RagioneSociale != null)

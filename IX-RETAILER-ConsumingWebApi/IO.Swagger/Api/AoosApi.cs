@@ -25,31 +25,6 @@ namespace IO.Swagger.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Aggiunge una aoo a un contratto cliente finale
-        /// </summary>
-        /// <remarks>
-        /// Se viene passato l&#39;identificativo cliente significa che i dati dell&#39;Aoo coincidono con quelli del cliente inserito.               Viene effettuata la validazione della partita iva a livello comunitario e viene eventualmente modificato il nome dell&#39;aoo              in base al risultato della validazione
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="aoo">Aoo</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>AooResponse</returns>
-        AooResponse InsertAoo (string id, CreateAooRequest aoo, string xAuthorization);
-
-        /// <summary>
-        /// Aggiunge una aoo a un contratto cliente finale
-        /// </summary>
-        /// <remarks>
-        /// Se viene passato l&#39;identificativo cliente significa che i dati dell&#39;Aoo coincidono con quelli del cliente inserito.               Viene effettuata la validazione della partita iva a livello comunitario e viene eventualmente modificato il nome dell&#39;aoo              in base al risultato della validazione
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="aoo">Aoo</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>ApiResponse of AooResponse</returns>
-        ApiResponse<AooResponse> InsertAooWithHttpInfo (string id, CreateAooRequest aoo, string xAuthorization);
-        /// <summary>
         /// Aggiunge a una aoo il modulo IxCe
         /// </summary>
         /// <remarks>
@@ -77,59 +52,34 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> InsertModuloIxCeAooWithHttpInfo (string id, string idAoo, AooModuloIxCeRequest modulo, string xAuthorization);
         /// <summary>
-        /// 
+        /// Aggiunge a una aoo il modulo IxFe
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="idAoo"></param>
-        /// <param name="modulo"></param>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="idAoo">Identificativo aoo</param>
+        /// <param name="modulo">Modulo IxFe</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns></returns>
         void InsertModuloIxFeAoo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization);
 
         /// <summary>
-        /// 
+        /// Aggiunge a una aoo il modulo IxFe
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="idAoo"></param>
-        /// <param name="modulo"></param>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="idAoo">Identificativo aoo</param>
+        /// <param name="modulo">Modulo IxFe</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> InsertModuloIxFeAooWithHttpInfo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
-        /// <summary>
-        /// Aggiunge una aoo a un contratto cliente finale
-        /// </summary>
-        /// <remarks>
-        /// Se viene passato l&#39;identificativo cliente significa che i dati dell&#39;Aoo coincidono con quelli del cliente inserito.               Viene effettuata la validazione della partita iva a livello comunitario e viene eventualmente modificato il nome dell&#39;aoo              in base al risultato della validazione
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="aoo">Aoo</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of AooResponse</returns>
-        System.Threading.Tasks.Task<AooResponse> InsertAooAsync (string id, CreateAooRequest aoo, string xAuthorization);
-
-        /// <summary>
-        /// Aggiunge una aoo a un contratto cliente finale
-        /// </summary>
-        /// <remarks>
-        /// Se viene passato l&#39;identificativo cliente significa che i dati dell&#39;Aoo coincidono con quelli del cliente inserito.               Viene effettuata la validazione della partita iva a livello comunitario e viene eventualmente modificato il nome dell&#39;aoo              in base al risultato della validazione
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="aoo">Aoo</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of ApiResponse (AooResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AooResponse>> InsertAooAsyncWithHttpInfo (string id, CreateAooRequest aoo, string xAuthorization);
         /// <summary>
         /// Aggiunge a una aoo il modulo IxCe
         /// </summary>
@@ -158,29 +108,29 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> InsertModuloIxCeAooAsyncWithHttpInfo (string id, string idAoo, AooModuloIxCeRequest modulo, string xAuthorization);
         /// <summary>
-        /// 
+        /// Aggiunge a una aoo il modulo IxFe
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="idAoo"></param>
-        /// <param name="modulo"></param>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="idAoo">Identificativo aoo</param>
+        /// <param name="modulo">Modulo IxFe</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of void</returns>
         System.Threading.Tasks.Task InsertModuloIxFeAooAsync (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization);
 
         /// <summary>
-        /// 
+        /// Aggiunge a una aoo il modulo IxFe
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="idAoo"></param>
-        /// <param name="modulo"></param>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="idAoo">Identificativo aoo</param>
+        /// <param name="modulo">Modulo IxFe</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> InsertModuloIxFeAooAsyncWithHttpInfo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization);
@@ -282,193 +232,6 @@ namespace IO.Swagger.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
-        }
-
-        /// <summary>
-        /// Aggiunge una aoo a un contratto cliente finale Se viene passato l&#39;identificativo cliente significa che i dati dell&#39;Aoo coincidono con quelli del cliente inserito.               Viene effettuata la validazione della partita iva a livello comunitario e viene eventualmente modificato il nome dell&#39;aoo              in base al risultato della validazione
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="aoo">Aoo</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>AooResponse</returns>
-        public AooResponse InsertAoo (string id, CreateAooRequest aoo, string xAuthorization)
-        {
-             ApiResponse<AooResponse> localVarResponse = InsertAooWithHttpInfo(id, aoo, xAuthorization);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Aggiunge una aoo a un contratto cliente finale Se viene passato l&#39;identificativo cliente significa che i dati dell&#39;Aoo coincidono con quelli del cliente inserito.               Viene effettuata la validazione della partita iva a livello comunitario e viene eventualmente modificato il nome dell&#39;aoo              in base al risultato della validazione
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="aoo">Aoo</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>ApiResponse of AooResponse</returns>
-        public ApiResponse< AooResponse > InsertAooWithHttpInfo (string id, CreateAooRequest aoo, string xAuthorization)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling AoosApi->InsertAoo");
-            // verify the required parameter 'aoo' is set
-            if (aoo == null)
-                throw new ApiException(400, "Missing required parameter 'aoo' when calling AoosApi->InsertAoo");
-            // verify the required parameter 'xAuthorization' is set
-            if (xAuthorization == null)
-                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AoosApi->InsertAoo");
-
-            var localVarPath = "/api/v2/contratti/{id}/clientefinale/aoos";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/xml", 
-                "text/xml", 
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
-            if (aoo != null && aoo.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(aoo); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = aoo; // byte array
-            }
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("InsertAoo", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<AooResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (AooResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AooResponse)));
-        }
-
-        /// <summary>
-        /// Aggiunge una aoo a un contratto cliente finale Se viene passato l&#39;identificativo cliente significa che i dati dell&#39;Aoo coincidono con quelli del cliente inserito.               Viene effettuata la validazione della partita iva a livello comunitario e viene eventualmente modificato il nome dell&#39;aoo              in base al risultato della validazione
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="aoo">Aoo</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of AooResponse</returns>
-        public async System.Threading.Tasks.Task<AooResponse> InsertAooAsync (string id, CreateAooRequest aoo, string xAuthorization)
-        {
-             ApiResponse<AooResponse> localVarResponse = await InsertAooAsyncWithHttpInfo(id, aoo, xAuthorization);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Aggiunge una aoo a un contratto cliente finale Se viene passato l&#39;identificativo cliente significa che i dati dell&#39;Aoo coincidono con quelli del cliente inserito.               Viene effettuata la validazione della partita iva a livello comunitario e viene eventualmente modificato il nome dell&#39;aoo              in base al risultato della validazione
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="aoo">Aoo</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of ApiResponse (AooResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<AooResponse>> InsertAooAsyncWithHttpInfo (string id, CreateAooRequest aoo, string xAuthorization)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling AoosApi->InsertAoo");
-            // verify the required parameter 'aoo' is set
-            if (aoo == null)
-                throw new ApiException(400, "Missing required parameter 'aoo' when calling AoosApi->InsertAoo");
-            // verify the required parameter 'xAuthorization' is set
-            if (xAuthorization == null)
-                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AoosApi->InsertAoo");
-
-            var localVarPath = "/api/v2/contratti/{id}/clientefinale/aoos";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/xml", 
-                "text/xml", 
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json",
-                "text/json",
-                "application/xml",
-                "text/xml"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
-            if (aoo != null && aoo.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(aoo); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = aoo; // byte array
-            }
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("InsertAoo", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<AooResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (AooResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AooResponse)));
         }
 
         /// <summary>
@@ -661,12 +424,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        ///  
+        /// Aggiunge a una aoo il modulo IxFe 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="idAoo"></param>
-        /// <param name="modulo"></param>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="idAoo">Identificativo aoo</param>
+        /// <param name="modulo">Modulo IxFe</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns></returns>
         public void InsertModuloIxFeAoo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization)
@@ -675,12 +438,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        ///  
+        /// Aggiunge a una aoo il modulo IxFe 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="idAoo"></param>
-        /// <param name="modulo"></param>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="idAoo">Identificativo aoo</param>
+        /// <param name="modulo">Modulo IxFe</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>ApiResponse of Object(void)</returns>
         public ApiResponse<Object> InsertModuloIxFeAooWithHttpInfo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization)
@@ -755,12 +518,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        ///  
+        /// Aggiunge a una aoo il modulo IxFe 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="idAoo"></param>
-        /// <param name="modulo"></param>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="idAoo">Identificativo aoo</param>
+        /// <param name="modulo">Modulo IxFe</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of void</returns>
         public async System.Threading.Tasks.Task InsertModuloIxFeAooAsync (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization)
@@ -770,12 +533,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        ///  
+        /// Aggiunge a una aoo il modulo IxFe 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="idAoo"></param>
-        /// <param name="modulo"></param>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="idAoo">Identificativo aoo</param>
+        /// <param name="modulo">Modulo IxFe</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ApiResponse</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> InsertModuloIxFeAooAsyncWithHttpInfo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization)

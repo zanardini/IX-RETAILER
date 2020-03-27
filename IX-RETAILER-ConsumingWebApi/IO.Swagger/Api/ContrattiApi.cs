@@ -25,6 +25,31 @@ namespace IO.Swagger.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Aggiunge un cliente standard ad un contratto cliente finale
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="aoo">Aoo</param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ClienteStandardResponse</returns>
+        ClienteStandardResponse CreateClienteStandard (string id, CreateClienteStandardRequest aoo, string xAuthorization);
+
+        /// <summary>
+        /// Aggiunge un cliente standard ad un contratto cliente finale
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="aoo">Aoo</param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of ClienteStandardResponse</returns>
+        ApiResponse<ClienteStandardResponse> CreateClienteStandardWithHttpInfo (string id, CreateClienteStandardRequest aoo, string xAuthorization);
+        /// <summary>
         /// Recupera il cartaceo del contratto
         /// </summary>
         /// <remarks>
@@ -119,31 +144,6 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> SaveContrattoWithHttpInfo (string id, ContrattoSaveRequest saveRequest, string xAuthorization);
         /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="data"></param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns></returns>
-        void SetDataAttivazione (string id, DateTime? data, string xAuthorization);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="data"></param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SetDataAttivazioneWithHttpInfo (string id, DateTime? data, string xAuthorization);
-        /// <summary>
         /// Upload file controfirmato
         /// </summary>
         /// <remarks>
@@ -170,6 +170,31 @@ namespace IO.Swagger.Api
         ApiResponse<Object> UploadControfirmatoWithHttpInfo (string id, System.IO.Stream _file, string xAuthorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Aggiunge un cliente standard ad un contratto cliente finale
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="aoo">Aoo</param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ClienteStandardResponse</returns>
+        System.Threading.Tasks.Task<ClienteStandardResponse> CreateClienteStandardAsync (string id, CreateClienteStandardRequest aoo, string xAuthorization);
+
+        /// <summary>
+        /// Aggiunge un cliente standard ad un contratto cliente finale
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="aoo">Aoo</param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (ClienteStandardResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ClienteStandardResponse>> CreateClienteStandardAsyncWithHttpInfo (string id, CreateClienteStandardRequest aoo, string xAuthorization);
         /// <summary>
         /// Recupera il cartaceo del contratto
         /// </summary>
@@ -264,31 +289,6 @@ namespace IO.Swagger.Api
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> SaveContrattoAsyncWithHttpInfo (string id, ContrattoSaveRequest saveRequest, string xAuthorization);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="data"></param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SetDataAttivazioneAsync (string id, DateTime? data, string xAuthorization);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="data"></param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SetDataAttivazioneAsyncWithHttpInfo (string id, DateTime? data, string xAuthorization);
         /// <summary>
         /// Upload file controfirmato
         /// </summary>
@@ -412,6 +412,193 @@ namespace IO.Swagger.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Aggiunge un cliente standard ad un contratto cliente finale 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="aoo">Aoo</param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ClienteStandardResponse</returns>
+        public ClienteStandardResponse CreateClienteStandard (string id, CreateClienteStandardRequest aoo, string xAuthorization)
+        {
+             ApiResponse<ClienteStandardResponse> localVarResponse = CreateClienteStandardWithHttpInfo(id, aoo, xAuthorization);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Aggiunge un cliente standard ad un contratto cliente finale 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="aoo">Aoo</param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of ClienteStandardResponse</returns>
+        public ApiResponse< ClienteStandardResponse > CreateClienteStandardWithHttpInfo (string id, CreateClienteStandardRequest aoo, string xAuthorization)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ContrattiApi->CreateClienteStandard");
+            // verify the required parameter 'aoo' is set
+            if (aoo == null)
+                throw new ApiException(400, "Missing required parameter 'aoo' when calling ContrattiApi->CreateClienteStandard");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling ContrattiApi->CreateClienteStandard");
+
+            var localVarPath = "/api/v2/contratti/{id}/clientestandard";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/xml", 
+                "text/xml", 
+                "application/x-www-form-urlencoded"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+            if (aoo != null && aoo.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(aoo); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = aoo; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateClienteStandard", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ClienteStandardResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ClienteStandardResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClienteStandardResponse)));
+        }
+
+        /// <summary>
+        /// Aggiunge un cliente standard ad un contratto cliente finale 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="aoo">Aoo</param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ClienteStandardResponse</returns>
+        public async System.Threading.Tasks.Task<ClienteStandardResponse> CreateClienteStandardAsync (string id, CreateClienteStandardRequest aoo, string xAuthorization)
+        {
+             ApiResponse<ClienteStandardResponse> localVarResponse = await CreateClienteStandardAsyncWithHttpInfo(id, aoo, xAuthorization);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Aggiunge un cliente standard ad un contratto cliente finale 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">Identificativo contratto</param>
+        /// <param name="aoo">Aoo</param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (ClienteStandardResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ClienteStandardResponse>> CreateClienteStandardAsyncWithHttpInfo (string id, CreateClienteStandardRequest aoo, string xAuthorization)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ContrattiApi->CreateClienteStandard");
+            // verify the required parameter 'aoo' is set
+            if (aoo == null)
+                throw new ApiException(400, "Missing required parameter 'aoo' when calling ContrattiApi->CreateClienteStandard");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling ContrattiApi->CreateClienteStandard");
+
+            var localVarPath = "/api/v2/contratti/{id}/clientestandard";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/xml", 
+                "text/xml", 
+                "application/x-www-form-urlencoded"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+            if (aoo != null && aoo.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(aoo); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = aoo; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateClienteStandard", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ClienteStandardResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ClienteStandardResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClienteStandardResponse)));
         }
 
         /// <summary>
@@ -1030,159 +1217,6 @@ namespace IO.Swagger.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SaveContratto", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="data"></param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns></returns>
-        public void SetDataAttivazione (string id, DateTime? data, string xAuthorization)
-        {
-             SetDataAttivazioneWithHttpInfo(id, data, xAuthorization);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="data"></param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> SetDataAttivazioneWithHttpInfo (string id, DateTime? data, string xAuthorization)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling ContrattiApi->SetDataAttivazione");
-            // verify the required parameter 'data' is set
-            if (data == null)
-                throw new ApiException(400, "Missing required parameter 'data' when calling ContrattiApi->SetDataAttivazione");
-            // verify the required parameter 'xAuthorization' is set
-            if (xAuthorization == null)
-                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling ContrattiApi->SetDataAttivazione");
-
-            var localVarPath = "/api/v2/contratti/{id}/dataprevistaattivazione";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (data != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "data", data)); // query parameter
-            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SetDataAttivazione", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="data"></param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SetDataAttivazioneAsync (string id, DateTime? data, string xAuthorization)
-        {
-             await SetDataAttivazioneAsyncWithHttpInfo(id, data, xAuthorization);
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="data"></param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> SetDataAttivazioneAsyncWithHttpInfo (string id, DateTime? data, string xAuthorization)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling ContrattiApi->SetDataAttivazione");
-            // verify the required parameter 'data' is set
-            if (data == null)
-                throw new ApiException(400, "Missing required parameter 'data' when calling ContrattiApi->SetDataAttivazione");
-            // verify the required parameter 'xAuthorization' is set
-            if (xAuthorization == null)
-                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling ContrattiApi->SetDataAttivazione");
-
-            var localVarPath = "/api/v2/contratti/{id}/dataprevistaattivazione";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (data != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "data", data)); // query parameter
-            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SetDataAttivazione", localVarResponse);
                 if (exception != null) throw exception;
             }
 

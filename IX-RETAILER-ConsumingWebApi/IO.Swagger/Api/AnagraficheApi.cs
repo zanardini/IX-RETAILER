@@ -94,7 +94,7 @@ namespace IO.Swagger.Api
         /// <returns>ApiResponse of FasceIxCeResponse</returns>
         ApiResponse<FasceIxCeResponse> GetFasceIxCeContrattoClienteFinaleWithHttpInfo (string tipoFascia, string xAuthorization);
         /// <summary>
-        /// 
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente finale
         /// </summary>
         /// <remarks>
         /// 
@@ -105,7 +105,7 @@ namespace IO.Swagger.Api
         FasceIxResponse GetFasceIxFeContrattoClienteFinale (string xAuthorization);
 
         /// <summary>
-        /// 
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente finale
         /// </summary>
         /// <remarks>
         /// 
@@ -276,7 +276,7 @@ namespace IO.Swagger.Api
         /// <returns>Task of ApiResponse (FasceIxCeResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<FasceIxCeResponse>> GetFasceIxCeContrattoClienteFinaleAsyncWithHttpInfo (string tipoFascia, string xAuthorization);
         /// <summary>
-        /// 
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente finale
         /// </summary>
         /// <remarks>
         /// 
@@ -287,7 +287,7 @@ namespace IO.Swagger.Api
         System.Threading.Tasks.Task<FasceIxResponse> GetFasceIxFeContrattoClienteFinaleAsync (string xAuthorization);
 
         /// <summary>
-        /// 
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente finale
         /// </summary>
         /// <remarks>
         /// 
@@ -940,7 +940,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        ///  
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente finale 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAuthorization">access_token</param>
@@ -952,7 +952,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        ///  
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente finale 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAuthorization">access_token</param>
@@ -1009,7 +1009,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        ///  
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente finale 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAuthorization">access_token</param>
@@ -1022,7 +1022,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        ///  
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente finale 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAuthorization">access_token</param>

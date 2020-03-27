@@ -59,7 +59,7 @@ namespace IO.Swagger.Api
         /// <param name="utenti">Utenti da abbinare all&#39;aoo</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns></returns>
-        void InsertAooUtenti (string id, string idAoo, AooUtentiRequest utenti, string xAuthorization);
+        void InsertAooUtenti (string id, string idAoo, List<string> utenti, string xAuthorization);
 
         /// <summary>
         /// Aggiunge gli utenti a una aoo
@@ -73,7 +73,7 @@ namespace IO.Swagger.Api
         /// <param name="utenti">Utenti da abbinare all&#39;aoo</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> InsertAooUtentiWithHttpInfo (string id, string idAoo, AooUtentiRequest utenti, string xAuthorization);
+        ApiResponse<Object> InsertAooUtentiWithHttpInfo (string id, string idAoo, List<string> utenti, string xAuthorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -111,7 +111,7 @@ namespace IO.Swagger.Api
         /// <param name="utenti">Utenti da abbinare all&#39;aoo</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task InsertAooUtentiAsync (string id, string idAoo, AooUtentiRequest utenti, string xAuthorization);
+        System.Threading.Tasks.Task InsertAooUtentiAsync (string id, string idAoo, List<string> utenti, string xAuthorization);
 
         /// <summary>
         /// Aggiunge gli utenti a una aoo
@@ -125,7 +125,7 @@ namespace IO.Swagger.Api
         /// <param name="utenti">Utenti da abbinare all&#39;aoo</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> InsertAooUtentiAsyncWithHttpInfo (string id, string idAoo, AooUtentiRequest utenti, string xAuthorization);
+        System.Threading.Tasks.Task<ApiResponse<Object>> InsertAooUtentiAsyncWithHttpInfo (string id, string idAoo, List<string> utenti, string xAuthorization);
         #endregion Asynchronous Operations
     }
 
@@ -386,7 +386,7 @@ namespace IO.Swagger.Api
         /// <param name="utenti">Utenti da abbinare all&#39;aoo</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns></returns>
-        public void InsertAooUtenti (string id, string idAoo, AooUtentiRequest utenti, string xAuthorization)
+        public void InsertAooUtenti (string id, string idAoo, List<string> utenti, string xAuthorization)
         {
              InsertAooUtentiWithHttpInfo(id, idAoo, utenti, xAuthorization);
         }
@@ -400,7 +400,7 @@ namespace IO.Swagger.Api
         /// <param name="utenti">Utenti da abbinare all&#39;aoo</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> InsertAooUtentiWithHttpInfo (string id, string idAoo, AooUtentiRequest utenti, string xAuthorization)
+        public ApiResponse<Object> InsertAooUtentiWithHttpInfo (string id, string idAoo, List<string> utenti, string xAuthorization)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -480,7 +480,7 @@ namespace IO.Swagger.Api
         /// <param name="utenti">Utenti da abbinare all&#39;aoo</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task InsertAooUtentiAsync (string id, string idAoo, AooUtentiRequest utenti, string xAuthorization)
+        public async System.Threading.Tasks.Task InsertAooUtentiAsync (string id, string idAoo, List<string> utenti, string xAuthorization)
         {
              await InsertAooUtentiAsyncWithHttpInfo(id, idAoo, utenti, xAuthorization);
 
@@ -495,7 +495,7 @@ namespace IO.Swagger.Api
         /// <param name="utenti">Utenti da abbinare all&#39;aoo</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> InsertAooUtentiAsyncWithHttpInfo (string id, string idAoo, AooUtentiRequest utenti, string xAuthorization)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> InsertAooUtentiAsyncWithHttpInfo (string id, string idAoo, List<string> utenti, string xAuthorization)
         {
             // verify the required parameter 'id' is set
             if (id == null)

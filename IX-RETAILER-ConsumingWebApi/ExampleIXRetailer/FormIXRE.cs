@@ -1,10 +1,7 @@
-﻿using Org.BouncyCastle.Cms;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ExampleIXRetailer
@@ -24,10 +21,10 @@ namespace ExampleIXRetailer
         {
             InitializeComponent();
 
-            if (System.IO.File.Exists(@"c:\temp\Ix\UsernameIxFe.txt"))
-                textBoxUsernameIxV3.Text = System.IO.File.ReadAllText(@"c:\temp\Ix\UsernameIxFe.txt");
-            if (System.IO.File.Exists(@"c:\temp\Ix\PasswordIxFe.txt"))
-                textBoxPasswordIxV3.Text = System.IO.File.ReadAllText(@"c:\temp\Ix\PasswordIxFe.txt");
+            if (System.IO.File.Exists(@"c:\temp\Ix\UsernameIxRe.txt"))
+                textBoxUsernameIxV3.Text = System.IO.File.ReadAllText(@"c:\temp\Ix\UsernameIxRe.txt");
+            if (System.IO.File.Exists(@"c:\temp\Ix\PasswordIxRe.txt"))
+                textBoxPasswordIxV3.Text = System.IO.File.ReadAllText(@"c:\temp\Ix\PasswordIxRe.txt");
         }
 
         private void buttonLoginIxV3_Click(object sender, EventArgs e)
@@ -77,19 +74,15 @@ namespace ExampleIXRetailer
             //EndPoint per la gestione degli elenchi di contratti
             IO.Swagger.Api.AnagraficheContrattiApi anagraficheContrattiApi = new IO.Swagger.Api.AnagraficheContrattiApi(_urlWebApiRetailer);
 
-
-            string nomeDistributore = "DISTRIBUTORE UNO";
-            string nomeRivenditore = "RIVENDITORE UNO";
-
-
             //dato il mio utente connesso recupero i dati dei rivenditore per cui io posso lavorare
             var rivenditori = anagraficheApi.GetRivenditori(_authToken).Rivenditori;
             //tra tutti i rivenditori cerco quello che mi interessa
-            var rivenditore = rivenditori.FirstOrDefault(x => x.Nome == nomeRivenditore);
+            var rivenditore = rivenditori.FirstOrDefault();
 
             //chiedo a IX l'elenco dei distributori per cui l'utente connesso può lavorare in funzione del rivendotore indicato
             var ditributori = anagraficheApi.GetDistributori(new Guid(rivenditore.Identificativo), _authToken).Distributori;
-            var distributore = ditributori.FirstOrDefault(x => x.Nome == nomeDistributore);
+            //tra tutti i ditributori cerco quello che mi interessa
+            var distributore = ditributori.FirstOrDefault();
 
             //Recupero le fasce IX FE disponibili
             List<IO.Swagger.Model.FasciaIxResponse> fasceIxFe = anagraficheApi.GetFasceIxFeContrattoClienteFinale(_authToken).FasceIx;

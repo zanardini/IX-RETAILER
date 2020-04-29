@@ -79,7 +79,9 @@ OpenAPI spec version: v3.1
     <Compile Include="Model\AooModuloIxRequest.cs" />
     <Compile Include="Model\AooRequest.cs" />
     <Compile Include="Model\AooUtenteDisponibileResponse.cs" />
+    <Compile Include="Model\AooUtenteDisponibileResponseV2.cs" />
     <Compile Include="Model\AooUtentiDisponibiliResponse.cs" />
+    <Compile Include="Model\AooUtentiDisponibiliResponseV2.cs" />
     <Compile Include="Model\ClienteStandardResponse.cs" />
     <Compile Include="Model\CodiceFiscaleValidatorRequest.cs" />
     <Compile Include="Model\ComuneResponse.cs" />
@@ -89,6 +91,7 @@ OpenAPI spec version: v3.1
     <Compile Include="Model\ContrattoResponse.cs" />
     <Compile Include="Model\ContrattoSaveRequest.cs" />
     <Compile Include="Model\ContrattoUtenteRequest.cs" />
+    <Compile Include="Model\ContrattoUtenteRequestV2.cs" />
     <Compile Include="Model\ContrattoUtenteResponse.cs" />
     <Compile Include="Model\CreateClienteStandardRequest.cs" />
     <Compile Include="Model\CreateContrattoRequest.cs" />
@@ -105,6 +108,7 @@ OpenAPI spec version: v3.1
     <Compile Include="Model\FasciaIxCeInfo.cs" />
     <Compile Include="Model\FasciaIxPecInfo.cs" />
     <Compile Include="Model\FasciaIxResponse.cs" />
+    <Compile Include="Model\InfoPasswordRequest.cs" />
     <Compile Include="Model\LegaleRappresentanteAoo.cs" />
     <Compile Include="Model\ListResultCount.cs" />
     <Compile Include="Model\PaeseResponse.cs" />

@@ -158,12 +158,13 @@ namespace ExampleIXRetailer
                 aoosApi.InsertModuloIxCeAoo(identificativoContratto, identificativoAoo, moduloIxCe, _authToken);
 
                 //Recuopero da IX RETAILER l'elenco completo utenti
-                List<IO.Swagger.Model.AooUtenteDisponibileResponse> utentiDisponibii = utentiAooApi.GetUtentiDisponibili(identificativoContratto, _authToken).Utenti;
+                List<IO.Swagger.Model.AooUtenteDisponibileResponseV2> utentiGiàCensitiPerRivenditore = utentiApi.GetUtentiRivenditore(new Guid(rivenditore.Identificativo), _authToken).Utenti;
 
                 //Aggiunta di un utente al contratto
-                IO.Swagger.Model.ContrattoUtenteResponse contrattoUtenteResponse = utentiApi.InsertUtente(identificativoContratto, new IO.Swagger.Model.ContrattoUtenteRequest
+                IO.Swagger.Model.ContrattoUtenteResponse contrattoUtenteResponse = utentiApi.InsertUtente(identificativoContratto, new IO.Swagger.Model.ContrattoUtenteRequestV2
                     (
                         "UserName",
+                        "Password", //password utente in formato Base64
                         new IO.Swagger.Model.DatiGeneraliUtente("Nome", "Cognome", IO.Swagger.Model.DatiGeneraliUtente.SessoEnum.M, "Cittadidanza", "Comune di Nascita", false, "Paese Nascita Estero", "Comune Nascita Estero", new DateTime(1979, 10, 26)),
                         new IO.Swagger.Model.DatiResidenzaUtente("Via", "Civico", "Comune di residenza"),
                         new IO.Swagger.Model.DatiFiscaliUtente("Codice fiscale")
@@ -171,6 +172,9 @@ namespace ExampleIXRetailer
                     _authToken
                 );
                 var identificativoUtente = contrattoUtenteResponse.Identificativo;
+
+                //Dimostrazione della api di cambio password utente -> Entrambe le password vanno indicate in formato Base64
+                utentiApi.UpdatePassword(new Guid(rivenditore.Identificativo), new Guid(identificativoUtente), new IO.Swagger.Model.InfoPasswordRequest("OldPassword", "NewPassword"), _authToken);
 
                 //associo alla Aoo la lista di utenti appena creati (almeno 1)
                 List<string> listaUtentiAoo = new List<string>();
@@ -217,6 +221,9 @@ namespace ExampleIXRetailer
                 IO.Swagger.Model.ElencoContrattiResponse elencoContrattiResponse = anagraficheContrattiApi.ElencoContratti(Guid.Parse(rivenditore.Identificativo), Guid.Parse(distributore.Identificativo), _authToken, null, null, null, null, null, null);
                 List<IO.Swagger.Model.ContrattoInfo> contratti = elencoContrattiResponse.Contratti;
                 var ResultCount = elencoContrattiResponse.ResultCount;
+
+
+
             }
             catch (Exception ex)
             {

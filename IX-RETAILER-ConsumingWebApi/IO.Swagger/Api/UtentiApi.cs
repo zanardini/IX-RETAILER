@@ -25,6 +25,29 @@ namespace IO.Swagger.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Recupera gli utenti di un rivenditore
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>AooUtentiDisponibiliResponseV2</returns>
+        AooUtentiDisponibiliResponseV2 GetUtentiRivenditore (Guid? identificativoRivenditore, string xAuthorization);
+
+        /// <summary>
+        /// Recupera gli utenti di un rivenditore
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of AooUtentiDisponibiliResponseV2</returns>
+        ApiResponse<AooUtentiDisponibiliResponseV2> GetUtentiRivenditoreWithHttpInfo (Guid? identificativoRivenditore, string xAuthorization);
+        /// <summary>
         /// Aggiunge un utente al contratto
         /// </summary>
         /// <remarks>
@@ -35,7 +58,7 @@ namespace IO.Swagger.Api
         /// <param name="utente">Utente</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>ContrattoUtenteResponse</returns>
-        ContrattoUtenteResponse InsertUtente (string id, ContrattoUtenteRequest utente, string xAuthorization);
+        ContrattoUtenteResponse InsertUtente (string id, ContrattoUtenteRequestV2 utente, string xAuthorization);
 
         /// <summary>
         /// Aggiunge un utente al contratto
@@ -48,9 +71,59 @@ namespace IO.Swagger.Api
         /// <param name="utente">Utente</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>ApiResponse of ContrattoUtenteResponse</returns>
-        ApiResponse<ContrattoUtenteResponse> InsertUtenteWithHttpInfo (string id, ContrattoUtenteRequest utente, string xAuthorization);
+        ApiResponse<ContrattoUtenteResponse> InsertUtenteWithHttpInfo (string id, ContrattoUtenteRequestV2 utente, string xAuthorization);
+        /// <summary>
+        /// Modifica la password di un utente
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns></returns>
+        void UpdatePassword (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization);
+
+        /// <summary>
+        /// Modifica la password di un utente
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UpdatePasswordWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Recupera gli utenti di un rivenditore
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of AooUtentiDisponibiliResponseV2</returns>
+        System.Threading.Tasks.Task<AooUtentiDisponibiliResponseV2> GetUtentiRivenditoreAsync (Guid? identificativoRivenditore, string xAuthorization);
+
+        /// <summary>
+        /// Recupera gli utenti di un rivenditore
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (AooUtentiDisponibiliResponseV2)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AooUtentiDisponibiliResponseV2>> GetUtentiRivenditoreAsyncWithHttpInfo (Guid? identificativoRivenditore, string xAuthorization);
         /// <summary>
         /// Aggiunge un utente al contratto
         /// </summary>
@@ -62,7 +135,7 @@ namespace IO.Swagger.Api
         /// <param name="utente">Utente</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ContrattoUtenteResponse</returns>
-        System.Threading.Tasks.Task<ContrattoUtenteResponse> InsertUtenteAsync (string id, ContrattoUtenteRequest utente, string xAuthorization);
+        System.Threading.Tasks.Task<ContrattoUtenteResponse> InsertUtenteAsync (string id, ContrattoUtenteRequestV2 utente, string xAuthorization);
 
         /// <summary>
         /// Aggiunge un utente al contratto
@@ -75,7 +148,34 @@ namespace IO.Swagger.Api
         /// <param name="utente">Utente</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ApiResponse (ContrattoUtenteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ContrattoUtenteResponse>> InsertUtenteAsyncWithHttpInfo (string id, ContrattoUtenteRequest utente, string xAuthorization);
+        System.Threading.Tasks.Task<ApiResponse<ContrattoUtenteResponse>> InsertUtenteAsyncWithHttpInfo (string id, ContrattoUtenteRequestV2 utente, string xAuthorization);
+        /// <summary>
+        /// Modifica la password di un utente
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UpdatePasswordAsync (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization);
+
+        /// <summary>
+        /// Modifica la password di un utente
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePasswordAsyncWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization);
         #endregion Asynchronous Operations
     }
 
@@ -177,6 +277,157 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
+        /// Recupera gli utenti di un rivenditore 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>AooUtentiDisponibiliResponseV2</returns>
+        public AooUtentiDisponibiliResponseV2 GetUtentiRivenditore (Guid? identificativoRivenditore, string xAuthorization)
+        {
+             ApiResponse<AooUtentiDisponibiliResponseV2> localVarResponse = GetUtentiRivenditoreWithHttpInfo(identificativoRivenditore, xAuthorization);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Recupera gli utenti di un rivenditore 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of AooUtentiDisponibiliResponseV2</returns>
+        public ApiResponse< AooUtentiDisponibiliResponseV2 > GetUtentiRivenditoreWithHttpInfo (Guid? identificativoRivenditore, string xAuthorization)
+        {
+            // verify the required parameter 'identificativoRivenditore' is set
+            if (identificativoRivenditore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoRivenditore' when calling UtentiApi->GetUtentiRivenditore");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling UtentiApi->GetUtentiRivenditore");
+
+            var localVarPath = "/api/v2/contratti/rivenditori/{identificativoRivenditore}/utenti";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (identificativoRivenditore != null) localVarPathParams.Add("identificativoRivenditore", this.Configuration.ApiClient.ParameterToString(identificativoRivenditore)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUtentiRivenditore", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AooUtentiDisponibiliResponseV2>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AooUtentiDisponibiliResponseV2) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AooUtentiDisponibiliResponseV2)));
+        }
+
+        /// <summary>
+        /// Recupera gli utenti di un rivenditore 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of AooUtentiDisponibiliResponseV2</returns>
+        public async System.Threading.Tasks.Task<AooUtentiDisponibiliResponseV2> GetUtentiRivenditoreAsync (Guid? identificativoRivenditore, string xAuthorization)
+        {
+             ApiResponse<AooUtentiDisponibiliResponseV2> localVarResponse = await GetUtentiRivenditoreAsyncWithHttpInfo(identificativoRivenditore, xAuthorization);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Recupera gli utenti di un rivenditore 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (AooUtentiDisponibiliResponseV2)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AooUtentiDisponibiliResponseV2>> GetUtentiRivenditoreAsyncWithHttpInfo (Guid? identificativoRivenditore, string xAuthorization)
+        {
+            // verify the required parameter 'identificativoRivenditore' is set
+            if (identificativoRivenditore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoRivenditore' when calling UtentiApi->GetUtentiRivenditore");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling UtentiApi->GetUtentiRivenditore");
+
+            var localVarPath = "/api/v2/contratti/rivenditori/{identificativoRivenditore}/utenti";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (identificativoRivenditore != null) localVarPathParams.Add("identificativoRivenditore", this.Configuration.ApiClient.ParameterToString(identificativoRivenditore)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUtentiRivenditore", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AooUtentiDisponibiliResponseV2>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AooUtentiDisponibiliResponseV2) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AooUtentiDisponibiliResponseV2)));
+        }
+
+        /// <summary>
         /// Aggiunge un utente al contratto 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
@@ -184,7 +435,7 @@ namespace IO.Swagger.Api
         /// <param name="utente">Utente</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>ContrattoUtenteResponse</returns>
-        public ContrattoUtenteResponse InsertUtente (string id, ContrattoUtenteRequest utente, string xAuthorization)
+        public ContrattoUtenteResponse InsertUtente (string id, ContrattoUtenteRequestV2 utente, string xAuthorization)
         {
              ApiResponse<ContrattoUtenteResponse> localVarResponse = InsertUtenteWithHttpInfo(id, utente, xAuthorization);
              return localVarResponse.Data;
@@ -198,7 +449,7 @@ namespace IO.Swagger.Api
         /// <param name="utente">Utente</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>ApiResponse of ContrattoUtenteResponse</returns>
-        public ApiResponse< ContrattoUtenteResponse > InsertUtenteWithHttpInfo (string id, ContrattoUtenteRequest utente, string xAuthorization)
+        public ApiResponse< ContrattoUtenteResponse > InsertUtenteWithHttpInfo (string id, ContrattoUtenteRequestV2 utente, string xAuthorization)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -277,7 +528,7 @@ namespace IO.Swagger.Api
         /// <param name="utente">Utente</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ContrattoUtenteResponse</returns>
-        public async System.Threading.Tasks.Task<ContrattoUtenteResponse> InsertUtenteAsync (string id, ContrattoUtenteRequest utente, string xAuthorization)
+        public async System.Threading.Tasks.Task<ContrattoUtenteResponse> InsertUtenteAsync (string id, ContrattoUtenteRequestV2 utente, string xAuthorization)
         {
              ApiResponse<ContrattoUtenteResponse> localVarResponse = await InsertUtenteAsyncWithHttpInfo(id, utente, xAuthorization);
              return localVarResponse.Data;
@@ -292,7 +543,7 @@ namespace IO.Swagger.Api
         /// <param name="utente">Utente</param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ApiResponse (ContrattoUtenteResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ContrattoUtenteResponse>> InsertUtenteAsyncWithHttpInfo (string id, ContrattoUtenteRequest utente, string xAuthorization)
+        public async System.Threading.Tasks.Task<ApiResponse<ContrattoUtenteResponse>> InsertUtenteAsyncWithHttpInfo (string id, ContrattoUtenteRequestV2 utente, string xAuthorization)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -361,6 +612,195 @@ namespace IO.Swagger.Api
             return new ApiResponse<ContrattoUtenteResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ContrattoUtenteResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ContrattoUtenteResponse)));
+        }
+
+        /// <summary>
+        /// Modifica la password di un utente 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns></returns>
+        public void UpdatePassword (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization)
+        {
+             UpdatePasswordWithHttpInfo(identificativoRivenditore, identificativoUtente, infoPassword, xAuthorization);
+        }
+
+        /// <summary>
+        /// Modifica la password di un utente 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> UpdatePasswordWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization)
+        {
+            // verify the required parameter 'identificativoRivenditore' is set
+            if (identificativoRivenditore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoRivenditore' when calling UtentiApi->UpdatePassword");
+            // verify the required parameter 'identificativoUtente' is set
+            if (identificativoUtente == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoUtente' when calling UtentiApi->UpdatePassword");
+            // verify the required parameter 'infoPassword' is set
+            if (infoPassword == null)
+                throw new ApiException(400, "Missing required parameter 'infoPassword' when calling UtentiApi->UpdatePassword");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling UtentiApi->UpdatePassword");
+
+            var localVarPath = "/api/v2/contratti/rivenditori/{identificativoRivenditore}/utente/{identificativoUtente}/password";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/xml", 
+                "text/xml", 
+                "application/x-www-form-urlencoded"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (identificativoRivenditore != null) localVarPathParams.Add("identificativoRivenditore", this.Configuration.ApiClient.ParameterToString(identificativoRivenditore)); // path parameter
+            if (identificativoUtente != null) localVarPathParams.Add("identificativoUtente", this.Configuration.ApiClient.ParameterToString(identificativoUtente)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+            if (infoPassword != null && infoPassword.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(infoPassword); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = infoPassword; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdatePassword", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Modifica la password di un utente 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UpdatePasswordAsync (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization)
+        {
+             await UpdatePasswordAsyncWithHttpInfo(identificativoRivenditore, identificativoUtente, infoPassword, xAuthorization);
+
+        }
+
+        /// <summary>
+        /// Modifica la password di un utente 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePasswordAsyncWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization)
+        {
+            // verify the required parameter 'identificativoRivenditore' is set
+            if (identificativoRivenditore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoRivenditore' when calling UtentiApi->UpdatePassword");
+            // verify the required parameter 'identificativoUtente' is set
+            if (identificativoUtente == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoUtente' when calling UtentiApi->UpdatePassword");
+            // verify the required parameter 'infoPassword' is set
+            if (infoPassword == null)
+                throw new ApiException(400, "Missing required parameter 'infoPassword' when calling UtentiApi->UpdatePassword");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling UtentiApi->UpdatePassword");
+
+            var localVarPath = "/api/v2/contratti/rivenditori/{identificativoRivenditore}/utente/{identificativoUtente}/password";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "text/json", 
+                "application/xml", 
+                "text/xml", 
+                "application/x-www-form-urlencoded"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (identificativoRivenditore != null) localVarPathParams.Add("identificativoRivenditore", this.Configuration.ApiClient.ParameterToString(identificativoRivenditore)); // path parameter
+            if (identificativoUtente != null) localVarPathParams.Add("identificativoUtente", this.Configuration.ApiClient.ParameterToString(identificativoUtente)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+            if (infoPassword != null && infoPassword.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(infoPassword); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = infoPassword; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdatePassword", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
     }

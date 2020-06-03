@@ -25,38 +25,38 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// AooUtentiDisponibiliResponse
+    /// ClientiResponseV2
     /// </summary>
     [DataContract]
-    public partial class AooUtentiDisponibiliResponse :  IEquatable<AooUtentiDisponibiliResponse>, IValidatableObject
+    public partial class ClientiResponseV2 :  IEquatable<ClientiResponseV2>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AooUtentiDisponibiliResponse" /> class.
+        /// Initializes a new instance of the <see cref="ClientiResponseV2" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AooUtentiDisponibiliResponse() { }
+        protected ClientiResponseV2() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AooUtentiDisponibiliResponse" /> class.
+        /// Initializes a new instance of the <see cref="ClientiResponseV2" /> class.
         /// </summary>
-        /// <param name="utenti">utenti (required).</param>
-        public AooUtentiDisponibiliResponse(List<AooUtenteDisponibileResponse> utenti = default(List<AooUtenteDisponibileResponse>))
+        /// <param name="clienti">clienti (required).</param>
+        public ClientiResponseV2(List<ClienteV2> clienti = default(List<ClienteV2>))
         {
-            // to ensure "utenti" is required (not null)
-            if (utenti == null)
+            // to ensure "clienti" is required (not null)
+            if (clienti == null)
             {
-                throw new InvalidDataException("utenti is a required property for AooUtentiDisponibiliResponse and cannot be null");
+                throw new InvalidDataException("clienti is a required property for ClientiResponseV2 and cannot be null");
             }
             else
             {
-                this.Utenti = utenti;
+                this.Clienti = clienti;
             }
         }
         
         /// <summary>
-        /// Gets or Sets Utenti
+        /// Gets or Sets Clienti
         /// </summary>
-        [DataMember(Name="utenti", EmitDefaultValue=false)]
-        public List<AooUtenteDisponibileResponse> Utenti { get; set; }
+        [DataMember(Name="clienti", EmitDefaultValue=false)]
+        public List<ClienteV2> Clienti { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,8 +65,8 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AooUtentiDisponibiliResponse {\n");
-            sb.Append("  Utenti: ").Append(Utenti).Append("\n");
+            sb.Append("class ClientiResponseV2 {\n");
+            sb.Append("  Clienti: ").Append(Clienti).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -87,24 +87,24 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AooUtentiDisponibiliResponse);
+            return this.Equals(input as ClientiResponseV2);
         }
 
         /// <summary>
-        /// Returns true if AooUtentiDisponibiliResponse instances are equal
+        /// Returns true if ClientiResponseV2 instances are equal
         /// </summary>
-        /// <param name="input">Instance of AooUtentiDisponibiliResponse to be compared</param>
+        /// <param name="input">Instance of ClientiResponseV2 to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AooUtentiDisponibiliResponse input)
+        public bool Equals(ClientiResponseV2 input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Utenti == input.Utenti ||
-                    this.Utenti != null &&
-                    this.Utenti.SequenceEqual(input.Utenti)
+                    this.Clienti == input.Clienti ||
+                    this.Clienti != null &&
+                    this.Clienti.SequenceEqual(input.Clienti)
                 );
         }
 
@@ -117,8 +117,8 @@ namespace IO.Swagger.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Utenti != null)
-                    hashCode = hashCode * 59 + this.Utenti.GetHashCode();
+                if (this.Clienti != null)
+                    hashCode = hashCode * 59 + this.Clienti.GetHashCode();
                 return hashCode;
             }
         }

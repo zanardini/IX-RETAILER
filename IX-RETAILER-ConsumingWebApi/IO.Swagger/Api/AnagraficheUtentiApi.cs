@@ -21,134 +21,126 @@ namespace IO.Swagger.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAoosApi : IApiAccessor
+    public interface IAnagraficheUtentiApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxCe
+        /// Recupera gli utenti di un rivenditore
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxCe</param>
+        /// <param name="identificativoRivenditore"></param>
         /// <param name="xAuthorization">access_token</param>
-        /// <returns></returns>
-        void InsertModuloIxCeAoo (string id, string idAoo, AooModuloIxCeRequest modulo, string xAuthorization);
+        /// <returns>AooUtentiDisponibiliResponseV2</returns>
+        AooUtentiDisponibiliResponseV2 GetUtentiRivenditore (Guid? identificativoRivenditore, string xAuthorization);
 
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxCe
+        /// Recupera gli utenti di un rivenditore
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxCe</param>
+        /// <param name="identificativoRivenditore"></param>
         /// <param name="xAuthorization">access_token</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> InsertModuloIxCeAooWithHttpInfo (string id, string idAoo, AooModuloIxCeRequest modulo, string xAuthorization);
+        /// <returns>ApiResponse of AooUtentiDisponibiliResponseV2</returns>
+        ApiResponse<AooUtentiDisponibiliResponseV2> GetUtentiRivenditoreWithHttpInfo (Guid? identificativoRivenditore, string xAuthorization);
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxFe
+        /// Modifica la password di un utente
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxFe</param>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns></returns>
-        void InsertModuloIxFeAoo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization);
+        void UpdatePassword (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization);
 
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxFe
+        /// Modifica la password di un utente
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxFe</param>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> InsertModuloIxFeAooWithHttpInfo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization);
+        ApiResponse<Object> UpdatePasswordWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxCe
+        /// Recupera gli utenti di un rivenditore
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxCe</param>
+        /// <param name="identificativoRivenditore"></param>
         /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task InsertModuloIxCeAooAsync (string id, string idAoo, AooModuloIxCeRequest modulo, string xAuthorization);
+        /// <returns>Task of AooUtentiDisponibiliResponseV2</returns>
+        System.Threading.Tasks.Task<AooUtentiDisponibiliResponseV2> GetUtentiRivenditoreAsync (Guid? identificativoRivenditore, string xAuthorization);
 
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxCe
+        /// Recupera gli utenti di un rivenditore
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxCe</param>
+        /// <param name="identificativoRivenditore"></param>
         /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> InsertModuloIxCeAooAsyncWithHttpInfo (string id, string idAoo, AooModuloIxCeRequest modulo, string xAuthorization);
+        /// <returns>Task of ApiResponse (AooUtentiDisponibiliResponseV2)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AooUtentiDisponibiliResponseV2>> GetUtentiRivenditoreAsyncWithHttpInfo (Guid? identificativoRivenditore, string xAuthorization);
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxFe
+        /// Modifica la password di un utente
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxFe</param>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task InsertModuloIxFeAooAsync (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization);
+        System.Threading.Tasks.Task UpdatePasswordAsync (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization);
 
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxFe
+        /// Modifica la password di un utente
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxFe</param>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> InsertModuloIxFeAooAsyncWithHttpInfo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePasswordAsyncWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class AoosApi : IAoosApi
+    public partial class AnagraficheUtentiApi : IAnagraficheUtentiApi
     {
         private IO.Swagger.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AoosApi"/> class.
+        /// Initializes a new instance of the <see cref="AnagraficheUtentiApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public AoosApi(String basePath)
+        public AnagraficheUtentiApi(String basePath)
         {
             this.Configuration = new IO.Swagger.Client.Configuration { BasePath = basePath };
 
@@ -156,12 +148,12 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AoosApi"/> class
+        /// Initializes a new instance of the <see cref="AnagraficheUtentiApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public AoosApi(IO.Swagger.Client.Configuration configuration = null)
+        public AnagraficheUtentiApi(IO.Swagger.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = IO.Swagger.Client.Configuration.Default;
@@ -235,44 +227,195 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxCe 
+        /// Recupera gli utenti di un rivenditore 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxCe</param>
+        /// <param name="identificativoRivenditore"></param>
         /// <param name="xAuthorization">access_token</param>
-        /// <returns></returns>
-        public void InsertModuloIxCeAoo (string id, string idAoo, AooModuloIxCeRequest modulo, string xAuthorization)
+        /// <returns>AooUtentiDisponibiliResponseV2</returns>
+        public AooUtentiDisponibiliResponseV2 GetUtentiRivenditore (Guid? identificativoRivenditore, string xAuthorization)
         {
-             InsertModuloIxCeAooWithHttpInfo(id, idAoo, modulo, xAuthorization);
+             ApiResponse<AooUtentiDisponibiliResponseV2> localVarResponse = GetUtentiRivenditoreWithHttpInfo(identificativoRivenditore, xAuthorization);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxCe 
+        /// Recupera gli utenti di un rivenditore 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxCe</param>
+        /// <param name="identificativoRivenditore"></param>
         /// <param name="xAuthorization">access_token</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> InsertModuloIxCeAooWithHttpInfo (string id, string idAoo, AooModuloIxCeRequest modulo, string xAuthorization)
+        /// <returns>ApiResponse of AooUtentiDisponibiliResponseV2</returns>
+        public ApiResponse< AooUtentiDisponibiliResponseV2 > GetUtentiRivenditoreWithHttpInfo (Guid? identificativoRivenditore, string xAuthorization)
         {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling AoosApi->InsertModuloIxCeAoo");
-            // verify the required parameter 'idAoo' is set
-            if (idAoo == null)
-                throw new ApiException(400, "Missing required parameter 'idAoo' when calling AoosApi->InsertModuloIxCeAoo");
-            // verify the required parameter 'modulo' is set
-            if (modulo == null)
-                throw new ApiException(400, "Missing required parameter 'modulo' when calling AoosApi->InsertModuloIxCeAoo");
+            // verify the required parameter 'identificativoRivenditore' is set
+            if (identificativoRivenditore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoRivenditore' when calling AnagraficheUtentiApi->GetUtentiRivenditore");
             // verify the required parameter 'xAuthorization' is set
             if (xAuthorization == null)
-                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AoosApi->InsertModuloIxCeAoo");
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AnagraficheUtentiApi->GetUtentiRivenditore");
 
-            var localVarPath = "/api/v2/contratti/{id}/clientefinale/aoos/{idAoo}/moduli/ixce";
+            var localVarPath = "/api/v2/contratti/rivenditori/{identificativoRivenditore}/utenti";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (identificativoRivenditore != null) localVarPathParams.Add("identificativoRivenditore", this.Configuration.ApiClient.ParameterToString(identificativoRivenditore)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUtentiRivenditore", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AooUtentiDisponibiliResponseV2>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AooUtentiDisponibiliResponseV2) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AooUtentiDisponibiliResponseV2)));
+        }
+
+        /// <summary>
+        /// Recupera gli utenti di un rivenditore 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of AooUtentiDisponibiliResponseV2</returns>
+        public async System.Threading.Tasks.Task<AooUtentiDisponibiliResponseV2> GetUtentiRivenditoreAsync (Guid? identificativoRivenditore, string xAuthorization)
+        {
+             ApiResponse<AooUtentiDisponibiliResponseV2> localVarResponse = await GetUtentiRivenditoreAsyncWithHttpInfo(identificativoRivenditore, xAuthorization);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Recupera gli utenti di un rivenditore 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (AooUtentiDisponibiliResponseV2)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AooUtentiDisponibiliResponseV2>> GetUtentiRivenditoreAsyncWithHttpInfo (Guid? identificativoRivenditore, string xAuthorization)
+        {
+            // verify the required parameter 'identificativoRivenditore' is set
+            if (identificativoRivenditore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoRivenditore' when calling AnagraficheUtentiApi->GetUtentiRivenditore");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AnagraficheUtentiApi->GetUtentiRivenditore");
+
+            var localVarPath = "/api/v2/contratti/rivenditori/{identificativoRivenditore}/utenti";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (identificativoRivenditore != null) localVarPathParams.Add("identificativoRivenditore", this.Configuration.ApiClient.ParameterToString(identificativoRivenditore)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUtentiRivenditore", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AooUtentiDisponibiliResponseV2>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (AooUtentiDisponibiliResponseV2) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AooUtentiDisponibiliResponseV2)));
+        }
+
+        /// <summary>
+        /// Modifica la password di un utente 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns></returns>
+        public void UpdatePassword (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization)
+        {
+             UpdatePasswordWithHttpInfo(identificativoRivenditore, identificativoUtente, infoPassword, xAuthorization);
+        }
+
+        /// <summary>
+        /// Modifica la password di un utente 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> UpdatePasswordWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization)
+        {
+            // verify the required parameter 'identificativoRivenditore' is set
+            if (identificativoRivenditore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoRivenditore' when calling AnagraficheUtentiApi->UpdatePassword");
+            // verify the required parameter 'identificativoUtente' is set
+            if (identificativoUtente == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoUtente' when calling AnagraficheUtentiApi->UpdatePassword");
+            // verify the required parameter 'infoPassword' is set
+            if (infoPassword == null)
+                throw new ApiException(400, "Missing required parameter 'infoPassword' when calling AnagraficheUtentiApi->UpdatePassword");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AnagraficheUtentiApi->UpdatePassword");
+
+            var localVarPath = "/api/v2/contratti/rivenditori/{identificativoRivenditore}/utente/{identificativoUtente}/password";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -297,29 +440,29 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (idAoo != null) localVarPathParams.Add("idAoo", this.Configuration.ApiClient.ParameterToString(idAoo)); // path parameter
+            if (identificativoRivenditore != null) localVarPathParams.Add("identificativoRivenditore", this.Configuration.ApiClient.ParameterToString(identificativoRivenditore)); // path parameter
+            if (identificativoUtente != null) localVarPathParams.Add("identificativoUtente", this.Configuration.ApiClient.ParameterToString(identificativoUtente)); // path parameter
             if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
-            if (modulo != null && modulo.GetType() != typeof(byte[]))
+            if (infoPassword != null && infoPassword.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(modulo); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(infoPassword); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = modulo; // byte array
+                localVarPostBody = infoPassword; // byte array
             }
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("InsertModuloIxCeAoo", localVarResponse);
+                Exception exception = ExceptionFactory("UpdatePassword", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -329,45 +472,45 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxCe 
+        /// Modifica la password di un utente 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxCe</param>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task InsertModuloIxCeAooAsync (string id, string idAoo, AooModuloIxCeRequest modulo, string xAuthorization)
+        public async System.Threading.Tasks.Task UpdatePasswordAsync (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization)
         {
-             await InsertModuloIxCeAooAsyncWithHttpInfo(id, idAoo, modulo, xAuthorization);
+             await UpdatePasswordAsyncWithHttpInfo(identificativoRivenditore, identificativoUtente, infoPassword, xAuthorization);
 
         }
 
         /// <summary>
-        /// Aggiunge a una aoo il modulo IxCe 
+        /// Modifica la password di un utente 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxCe</param>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoUtente"></param>
+        /// <param name="infoPassword"></param>
         /// <param name="xAuthorization">access_token</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> InsertModuloIxCeAooAsyncWithHttpInfo (string id, string idAoo, AooModuloIxCeRequest modulo, string xAuthorization)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePasswordAsyncWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoUtente, InfoPasswordRequest infoPassword, string xAuthorization)
         {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling AoosApi->InsertModuloIxCeAoo");
-            // verify the required parameter 'idAoo' is set
-            if (idAoo == null)
-                throw new ApiException(400, "Missing required parameter 'idAoo' when calling AoosApi->InsertModuloIxCeAoo");
-            // verify the required parameter 'modulo' is set
-            if (modulo == null)
-                throw new ApiException(400, "Missing required parameter 'modulo' when calling AoosApi->InsertModuloIxCeAoo");
+            // verify the required parameter 'identificativoRivenditore' is set
+            if (identificativoRivenditore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoRivenditore' when calling AnagraficheUtentiApi->UpdatePassword");
+            // verify the required parameter 'identificativoUtente' is set
+            if (identificativoUtente == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoUtente' when calling AnagraficheUtentiApi->UpdatePassword");
+            // verify the required parameter 'infoPassword' is set
+            if (infoPassword == null)
+                throw new ApiException(400, "Missing required parameter 'infoPassword' when calling AnagraficheUtentiApi->UpdatePassword");
             // verify the required parameter 'xAuthorization' is set
             if (xAuthorization == null)
-                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AoosApi->InsertModuloIxCeAoo");
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AnagraficheUtentiApi->UpdatePassword");
 
-            var localVarPath = "/api/v2/contratti/{id}/clientefinale/aoos/{idAoo}/moduli/ixce";
+            var localVarPath = "/api/v2/contratti/rivenditori/{identificativoRivenditore}/utente/{identificativoUtente}/password";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -392,218 +535,29 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (idAoo != null) localVarPathParams.Add("idAoo", this.Configuration.ApiClient.ParameterToString(idAoo)); // path parameter
+            if (identificativoRivenditore != null) localVarPathParams.Add("identificativoRivenditore", this.Configuration.ApiClient.ParameterToString(identificativoRivenditore)); // path parameter
+            if (identificativoUtente != null) localVarPathParams.Add("identificativoUtente", this.Configuration.ApiClient.ParameterToString(identificativoUtente)); // path parameter
             if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
-            if (modulo != null && modulo.GetType() != typeof(byte[]))
+            if (infoPassword != null && infoPassword.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(modulo); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(infoPassword); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = modulo; // byte array
+                localVarPostBody = infoPassword; // byte array
             }
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("InsertModuloIxCeAoo", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// Aggiunge a una aoo il modulo IxFe 
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxFe</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns></returns>
-        public void InsertModuloIxFeAoo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization)
-        {
-             InsertModuloIxFeAooWithHttpInfo(id, idAoo, modulo, xAuthorization);
-        }
-
-        /// <summary>
-        /// Aggiunge a una aoo il modulo IxFe 
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxFe</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> InsertModuloIxFeAooWithHttpInfo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling AoosApi->InsertModuloIxFeAoo");
-            // verify the required parameter 'idAoo' is set
-            if (idAoo == null)
-                throw new ApiException(400, "Missing required parameter 'idAoo' when calling AoosApi->InsertModuloIxFeAoo");
-            // verify the required parameter 'modulo' is set
-            if (modulo == null)
-                throw new ApiException(400, "Missing required parameter 'modulo' when calling AoosApi->InsertModuloIxFeAoo");
-            // verify the required parameter 'xAuthorization' is set
-            if (xAuthorization == null)
-                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AoosApi->InsertModuloIxFeAoo");
-
-            var localVarPath = "/api/v2/contratti/{id}/clientefinale/aoos/{idAoo}/moduli/ixfe";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/xml", 
-                "text/xml", 
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (idAoo != null) localVarPathParams.Add("idAoo", this.Configuration.ApiClient.ParameterToString(idAoo)); // path parameter
-            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
-            if (modulo != null && modulo.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(modulo); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = modulo; // byte array
-            }
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("InsertModuloIxFeAoo", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// Aggiunge a una aoo il modulo IxFe 
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxFe</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task InsertModuloIxFeAooAsync (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization)
-        {
-             await InsertModuloIxFeAooAsyncWithHttpInfo(id, idAoo, modulo, xAuthorization);
-
-        }
-
-        /// <summary>
-        /// Aggiunge a una aoo il modulo IxFe 
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">Identificativo contratto</param>
-        /// <param name="idAoo">Identificativo aoo</param>
-        /// <param name="modulo">Modulo IxFe</param>
-        /// <param name="xAuthorization">access_token</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> InsertModuloIxFeAooAsyncWithHttpInfo (string id, string idAoo, AooModuloIxRequest modulo, string xAuthorization)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling AoosApi->InsertModuloIxFeAoo");
-            // verify the required parameter 'idAoo' is set
-            if (idAoo == null)
-                throw new ApiException(400, "Missing required parameter 'idAoo' when calling AoosApi->InsertModuloIxFeAoo");
-            // verify the required parameter 'modulo' is set
-            if (modulo == null)
-                throw new ApiException(400, "Missing required parameter 'modulo' when calling AoosApi->InsertModuloIxFeAoo");
-            // verify the required parameter 'xAuthorization' is set
-            if (xAuthorization == null)
-                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AoosApi->InsertModuloIxFeAoo");
-
-            var localVarPath = "/api/v2/contratti/{id}/clientefinale/aoos/{idAoo}/moduli/ixfe";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/xml", 
-                "text/xml", 
-                "application/x-www-form-urlencoded"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (idAoo != null) localVarPathParams.Add("idAoo", this.Configuration.ApiClient.ParameterToString(idAoo)); // path parameter
-            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
-            if (modulo != null && modulo.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(modulo); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = modulo; // byte array
-            }
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("InsertModuloIxFeAoo", localVarResponse);
+                Exception exception = ExceptionFactory("UpdatePassword", localVarResponse);
                 if (exception != null) throw exception;
             }
 

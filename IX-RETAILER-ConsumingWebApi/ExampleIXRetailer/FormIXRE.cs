@@ -54,8 +54,6 @@ namespace ExampleIXRetailer
         {
             try
             {
-
-
                 // EndPoint per gestione anagrafiche (Distributori\Rivenditori)
                 IO.Swagger.Api.AnagraficheApi anagraficheApi = new IO.Swagger.Api.AnagraficheApi(_urlWebApiRetailer);
 
@@ -63,19 +61,23 @@ namespace ExampleIXRetailer
                 IO.Swagger.Api.ContrattiApi contrattiApi = new IO.Swagger.Api.ContrattiApi(_urlWebApiRetailer);
 
                 //EndPoint per la gestione del contratto di tipo cliente finale
-                IO.Swagger.Api.ContrattoClienteFinaleApi contrattoClienteFinaleApi = new IO.Swagger.Api.ContrattoClienteFinaleApi(_urlWebApiRetailer);
-
+                IO.Swagger.Api.CreazioneContrattoApi creazioneContrattoApi = new IO.Swagger.Api.CreazioneContrattoApi(_urlWebApiRetailer);
+                
+                
                 //EndPoint per la gestione dell'aoo
-                IO.Swagger.Api.AoosApi aoosApi = new IO.Swagger.Api.AoosApi(_urlWebApiRetailer);
+                IO.Swagger.Api.ContrattiAoosApi contrattiAoosApi = new IO.Swagger.Api.ContrattiAoosApi(_urlWebApiRetailer);
 
                 //EndPoint per la gestione dell'utente
-                IO.Swagger.Api.UtentiApi utentiApi = new IO.Swagger.Api.UtentiApi(_urlWebApiRetailer);
+                IO.Swagger.Api.AnagraficheUtentiApi anagraficheUtentiApi = new IO.Swagger.Api.AnagraficheUtentiApi(_urlWebApiRetailer);
 
                 //EndPoint per la gestione dell'associazione utente\aoo
-                IO.Swagger.Api.UtentiAooApi utentiAooApi = new IO.Swagger.Api.UtentiAooApi(_urlWebApiRetailer);
+                IO.Swagger.Api.ContrattiAoosUtentiApi contrattiAoosUtentiApi = new IO.Swagger.Api.ContrattiAoosUtentiApi(_urlWebApiRetailer);
 
                 //EndPoint per la gestione degli elenchi di contratti
                 IO.Swagger.Api.AnagraficheContrattiApi anagraficheContrattiApi = new IO.Swagger.Api.AnagraficheContrattiApi(_urlWebApiRetailer);
+
+
+
 
                 //dato il mio utente connesso recupero i dati dei rivenditore per cui io posso lavorare
                 var rivenditori = anagraficheApi.GetRivenditori(_authToken).Rivenditori;
@@ -88,7 +90,7 @@ namespace ExampleIXRetailer
                 var distributore = ditributori.FirstOrDefault();
 
                 //Recupero le fasce IX FE disponibili
-                List<IO.Swagger.Model.FasciaIxResponse> fasceIxFe = anagraficheApi.GetFasceIxFeContrattoClienteFinale(_authToken).FasceIx;
+                List<IO.Swagger.Model.FasciaIxResponse> fasceIxFe = anagraficheContrattiApi.GetFasceIxFeContrattoClienteFinale(_authToken).FasceIx;
                 foreach (var fasciaIxFe in fasceIxFe)
                 {
                     var descrizione = fasciaIxFe.Descrizione;
@@ -96,7 +98,7 @@ namespace ExampleIXRetailer
                 }
 
                 //Recupero le fasce IX CE disponibili
-                var fasceIxCe = anagraficheApi.GetFasceIxCeContrattoClienteFinale("SPAZIO", _authToken).FasceIxCe;
+                var fasceIxCe = anagraficheContrattiApi.GetFasceIxCeContrattoClienteFinale("SPAZIO", _authToken).FasceIxCe;
                 foreach (var fasciaIxCe in fasceIxCe)
                 {
                     var valore = fasciaIxCe.Valore;
@@ -121,7 +123,7 @@ namespace ExampleIXRetailer
 
                 //Creo un contratto cliente standard
                 IO.Swagger.Model.CreateContrattoRequest createContrattoRequest = new IO.Swagger.Model.CreateContrattoRequest(descrizioneContratto, idEsternoContratto, rivenditore.Identificativo, distributore.Identificativo);
-                IO.Swagger.Model.CreateContrattoResponse createContrattoResponse = contrattoClienteFinaleApi.CreateContrattoClienteFinale(createContrattoRequest, _authToken);
+                IO.Swagger.Model.CreateContrattoResponse createContrattoResponse = creazioneContrattoApi.CreateContrattoClienteStandard(createContrattoRequest, _authToken);
                 var identificativoContratto = createContrattoResponse.Identificativo;
 
                 // creo il cliente sul contratto. Direttamente IX RETAILER creerà anche l'AOO del cliente
@@ -144,7 +146,7 @@ namespace ExampleIXRetailer
                         IO.Swagger.Model.AooModuloIxRequest.TipoFirmaEnum.AUTOMATICAINTERMEDIARIO,
                         IO.Swagger.Model.AooModuloIxRequest.TipoFatturaEnum.XMLNONFIRMATO
                     );
-                aoosApi.InsertModuloIxFeAoo(identificativoContratto, identificativoAoo, moduloIxFe, _authToken);
+                contrattiAoosApi.InsertModuloIxFeAoo(identificativoContratto, identificativoAoo, moduloIxFe, _authToken);
 
                 //Aggiungo il modulo IX CE all'AOO
                 IO.Swagger.Model.AooModuloIxCeRequest moduloIxCe = new IO.Swagger.Model.AooModuloIxCeRequest
@@ -155,13 +157,13 @@ namespace ExampleIXRetailer
                         new IO.Swagger.Model.ResponsabileConservazioneInfo("Nome", "Cognome", "Codice Fiscale", "Cittadinanza"),
                         new IO.Swagger.Model.PeriodoImpostaInfo(new DateTime(2020, 01, 01), new DateTime(2020, 12, 31), new DateTime(2020, 03, 01))
                     );
-                aoosApi.InsertModuloIxCeAoo(identificativoContratto, identificativoAoo, moduloIxCe, _authToken);
+                contrattiAoosApi.InsertModuloIxCeAoo(identificativoContratto, identificativoAoo, moduloIxCe, _authToken);
 
                 //Recuopero da IX RETAILER l'elenco completo utenti
-                List<IO.Swagger.Model.AooUtenteDisponibileResponseV2> utentiGiàCensitiPerRivenditore = utentiApi.GetUtentiRivenditore(new Guid(rivenditore.Identificativo), _authToken).Utenti;
+                List<IO.Swagger.Model.AooUtenteDisponibileResponseV2> utentiGiàCensitiPerRivenditore = anagraficheUtentiApi.GetUtentiRivenditore(new Guid(rivenditore.Identificativo), _authToken).Utenti;
 
                 //Aggiunta di un utente al contratto
-                IO.Swagger.Model.ContrattoUtenteResponse contrattoUtenteResponse = utentiApi.InsertUtente(identificativoContratto, new IO.Swagger.Model.ContrattoUtenteRequestV2
+                IO.Swagger.Model.ContrattoUtenteResponse contrattoUtenteResponse = contrattiApi.InsertUtente(identificativoContratto, new IO.Swagger.Model.ContrattoUtenteRequestV2
                     (
                         "UserName",
                         "Password", //password utente in formato Base64
@@ -174,12 +176,12 @@ namespace ExampleIXRetailer
                 var identificativoUtente = contrattoUtenteResponse.Identificativo;
 
                 //Dimostrazione della api di cambio password utente -> Entrambe le password vanno indicate in formato Base64
-                utentiApi.UpdatePassword(new Guid(rivenditore.Identificativo), new Guid(identificativoUtente), new IO.Swagger.Model.InfoPasswordRequest("OldPassword", "NewPassword"), _authToken);
+                anagraficheUtentiApi.UpdatePassword(new Guid(rivenditore.Identificativo), new Guid(identificativoUtente), new IO.Swagger.Model.InfoPasswordRequest("OldPassword", "NewPassword"), _authToken);
 
                 //associo alla Aoo la lista di utenti appena creati (almeno 1)
                 List<string> listaUtentiAoo = new List<string>();
                 listaUtentiAoo.Add(identificativoUtente);
-                utentiAooApi.InsertAooUtenti(identificativoContratto, identificativoAoo, listaUtentiAoo, _authToken);
+                contrattiAoosUtentiApi.InsertAooUtenti(identificativoContratto, identificativoAoo, listaUtentiAoo, _authToken);
 
                 //Download PDF del contratto
                 Stream contrattoStream = contrattiApi.GetCartaceoContratto(identificativoContratto, _authToken);
@@ -217,11 +219,18 @@ namespace ExampleIXRetailer
                         break;
                 }
 
+
                 //Recupero  l’elenco dei contratti associati al rivenditore e distributore
                 IO.Swagger.Model.ElencoContrattiResponse elencoContrattiResponse = anagraficheContrattiApi.ElencoContratti(Guid.Parse(rivenditore.Identificativo), Guid.Parse(distributore.Identificativo), _authToken, null, null, null, null, null, null);
                 List<IO.Swagger.Model.ContrattoInfo> contratti = elencoContrattiResponse.Contratti;
                 var ResultCount = elencoContrattiResponse.ResultCount;
 
+
+
+
+                IO.Swagger.Model.CreateContrattoRequest requestContrattoPerAggiuntaDitte = new IO.Swagger.Model.CreateContrattoRequest("Aggiunta ditta 1", "", rivenditore.Identificativo, distributore.Identificativo);
+                IO.Swagger.Model.CreateContrattoResponse responseContrattoPerAggiuntaDitte = creazioneContrattoApi.CreateContrattoAggiuntaDitte(Guid.Parse(identificativoCliente), requestContrattoPerAggiuntaDitte, _authToken);
+                //id contratto per creazione ditte: responseContrattoPerAggiuntaDitte.Identificativo;
 
 
             }

@@ -25,40 +25,50 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// AooUtenteDisponibileResponse
+    /// ClienteV2
     /// </summary>
     [DataContract]
-    public partial class AooUtenteDisponibileResponse :  IEquatable<AooUtenteDisponibileResponse>, IValidatableObject
+    public partial class ClienteV2 :  IEquatable<ClienteV2>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AooUtenteDisponibileResponse" /> class.
+        /// Initializes a new instance of the <see cref="ClienteV2" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AooUtenteDisponibileResponse() { }
+        protected ClienteV2() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AooUtenteDisponibileResponse" /> class.
+        /// Initializes a new instance of the <see cref="ClienteV2" /> class.
         /// </summary>
         /// <param name="identificativo">identificativo (required).</param>
-        /// <param name="fullname">fullname (required).</param>
-        public AooUtenteDisponibileResponse(string identificativo = default(string), string fullname = default(string))
+        /// <param name="partitaiva">partitaiva (required).</param>
+        /// <param name="ragioneSociale">ragioneSociale (required).</param>
+        public ClienteV2(string identificativo = default(string), string partitaiva = default(string), string ragioneSociale = default(string))
         {
             // to ensure "identificativo" is required (not null)
             if (identificativo == null)
             {
-                throw new InvalidDataException("identificativo is a required property for AooUtenteDisponibileResponse and cannot be null");
+                throw new InvalidDataException("identificativo is a required property for ClienteV2 and cannot be null");
             }
             else
             {
                 this.Identificativo = identificativo;
             }
-            // to ensure "fullname" is required (not null)
-            if (fullname == null)
+            // to ensure "partitaiva" is required (not null)
+            if (partitaiva == null)
             {
-                throw new InvalidDataException("fullname is a required property for AooUtenteDisponibileResponse and cannot be null");
+                throw new InvalidDataException("partitaiva is a required property for ClienteV2 and cannot be null");
             }
             else
             {
-                this.Fullname = fullname;
+                this.Partitaiva = partitaiva;
+            }
+            // to ensure "ragioneSociale" is required (not null)
+            if (ragioneSociale == null)
+            {
+                throw new InvalidDataException("ragioneSociale is a required property for ClienteV2 and cannot be null");
+            }
+            else
+            {
+                this.RagioneSociale = ragioneSociale;
             }
         }
         
@@ -69,10 +79,16 @@ namespace IO.Swagger.Model
         public string Identificativo { get; set; }
 
         /// <summary>
-        /// Gets or Sets Fullname
+        /// Gets or Sets Partitaiva
         /// </summary>
-        [DataMember(Name="fullname", EmitDefaultValue=false)]
-        public string Fullname { get; set; }
+        [DataMember(Name="partitaiva", EmitDefaultValue=false)]
+        public string Partitaiva { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RagioneSociale
+        /// </summary>
+        [DataMember(Name="ragioneSociale", EmitDefaultValue=false)]
+        public string RagioneSociale { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -81,9 +97,10 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AooUtenteDisponibileResponse {\n");
+            sb.Append("class ClienteV2 {\n");
             sb.Append("  Identificativo: ").Append(Identificativo).Append("\n");
-            sb.Append("  Fullname: ").Append(Fullname).Append("\n");
+            sb.Append("  Partitaiva: ").Append(Partitaiva).Append("\n");
+            sb.Append("  RagioneSociale: ").Append(RagioneSociale).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -104,15 +121,15 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AooUtenteDisponibileResponse);
+            return this.Equals(input as ClienteV2);
         }
 
         /// <summary>
-        /// Returns true if AooUtenteDisponibileResponse instances are equal
+        /// Returns true if ClienteV2 instances are equal
         /// </summary>
-        /// <param name="input">Instance of AooUtenteDisponibileResponse to be compared</param>
+        /// <param name="input">Instance of ClienteV2 to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AooUtenteDisponibileResponse input)
+        public bool Equals(ClienteV2 input)
         {
             if (input == null)
                 return false;
@@ -124,9 +141,14 @@ namespace IO.Swagger.Model
                     this.Identificativo.Equals(input.Identificativo))
                 ) && 
                 (
-                    this.Fullname == input.Fullname ||
-                    (this.Fullname != null &&
-                    this.Fullname.Equals(input.Fullname))
+                    this.Partitaiva == input.Partitaiva ||
+                    (this.Partitaiva != null &&
+                    this.Partitaiva.Equals(input.Partitaiva))
+                ) && 
+                (
+                    this.RagioneSociale == input.RagioneSociale ||
+                    (this.RagioneSociale != null &&
+                    this.RagioneSociale.Equals(input.RagioneSociale))
                 );
         }
 
@@ -141,8 +163,10 @@ namespace IO.Swagger.Model
                 int hashCode = 41;
                 if (this.Identificativo != null)
                     hashCode = hashCode * 59 + this.Identificativo.GetHashCode();
-                if (this.Fullname != null)
-                    hashCode = hashCode * 59 + this.Fullname.GetHashCode();
+                if (this.Partitaiva != null)
+                    hashCode = hashCode * 59 + this.Partitaiva.GetHashCode();
+                if (this.RagioneSociale != null)
+                    hashCode = hashCode * 59 + this.RagioneSociale.GetHashCode();
                 return hashCode;
             }
         }

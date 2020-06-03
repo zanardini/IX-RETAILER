@@ -60,12 +60,12 @@ OpenAPI spec version: v3.1
   <ItemGroup>
     <Compile Include="Api\AnagraficheApi.cs" />
     <Compile Include="Api\AnagraficheContrattiApi.cs" />
-    <Compile Include="Api\AoosApi.cs" />
+    <Compile Include="Api\AnagraficheUtentiApi.cs" />
     <Compile Include="Api\AuthorizationApi.cs" />
+    <Compile Include="Api\ContrattiAoosApi.cs" />
+    <Compile Include="Api\ContrattiAoosUtentiApi.cs" />
     <Compile Include="Api\ContrattiApi.cs" />
-    <Compile Include="Api\ContrattoClienteFinaleApi.cs" />
-    <Compile Include="Api\UtentiAooApi.cs" />
-    <Compile Include="Api\UtentiApi.cs" />
+    <Compile Include="Api\CreazioneContrattoApi.cs" />
     <Compile Include="Client\ApiClient.cs" />
     <Compile Include="Client\ApiException.cs" />
     <Compile Include="Client\ApiResponse.cs" />
@@ -78,11 +78,12 @@ OpenAPI spec version: v3.1
     <Compile Include="Model\AooModuloIxCeRequest.cs" />
     <Compile Include="Model\AooModuloIxRequest.cs" />
     <Compile Include="Model\AooRequest.cs" />
-    <Compile Include="Model\AooUtenteDisponibileResponse.cs" />
+    <Compile Include="Model\AooResponse.cs" />
     <Compile Include="Model\AooUtenteDisponibileResponseV2.cs" />
-    <Compile Include="Model\AooUtentiDisponibiliResponse.cs" />
     <Compile Include="Model\AooUtentiDisponibiliResponseV2.cs" />
     <Compile Include="Model\ClienteStandardResponse.cs" />
+    <Compile Include="Model\ClienteV2.cs" />
+    <Compile Include="Model\ClientiResponseV2.cs" />
     <Compile Include="Model\CodiceFiscaleValidatorRequest.cs" />
     <Compile Include="Model\ComuneResponse.cs" />
     <Compile Include="Model\ComuniResponse.cs" />
@@ -90,9 +91,9 @@ OpenAPI spec version: v3.1
     <Compile Include="Model\ContrattoModulo.cs" />
     <Compile Include="Model\ContrattoResponse.cs" />
     <Compile Include="Model\ContrattoSaveRequest.cs" />
-    <Compile Include="Model\ContrattoUtenteRequest.cs" />
     <Compile Include="Model\ContrattoUtenteRequestV2.cs" />
     <Compile Include="Model\ContrattoUtenteResponse.cs" />
+    <Compile Include="Model\CreateAooRequest.cs" />
     <Compile Include="Model\CreateClienteStandardRequest.cs" />
     <Compile Include="Model\CreateContrattoRequest.cs" />
     <Compile Include="Model\CreateContrattoResponse.cs" />

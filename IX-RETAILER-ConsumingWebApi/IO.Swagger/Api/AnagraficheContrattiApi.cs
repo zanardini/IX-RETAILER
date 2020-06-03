@@ -25,7 +25,7 @@ namespace IO.Swagger.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Elenca i contratti disponibili
+        /// Recupera i contratti disponibili
         /// </summary>
         /// <remarks>
         /// 
@@ -44,7 +44,7 @@ namespace IO.Swagger.Api
         ElencoContrattiResponse ElencoContratti (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization, string stato = null, string filter = null, int? skip = null, int? take = null, string sortedBy = null, string sortDirection = null);
 
         /// <summary>
-        /// Elenca i contratti disponibili
+        /// Recupera i contratti disponibili
         /// </summary>
         /// <remarks>
         /// 
@@ -61,10 +61,79 @@ namespace IO.Swagger.Api
         /// <param name="sortDirection">Direzione di ordinamento (asc, desc) (optional)</param>
         /// <returns>ApiResponse of ElencoContrattiResponse</returns>
         ApiResponse<ElencoContrattiResponse> ElencoContrattiWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization, string stato = null, string filter = null, int? skip = null, int? take = null, string sortedBy = null, string sortDirection = null);
+        /// <summary>
+        /// Recupera i clienti del rivenditore e distributore
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoDistributore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ClientiResponseV2</returns>
+        ClientiResponseV2 GetClienti (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization);
+
+        /// <summary>
+        /// Recupera i clienti del rivenditore e distributore
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoDistributore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of ClientiResponseV2</returns>
+        ApiResponse<ClientiResponseV2> GetClientiWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization);
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXCE e contratto cliente standard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tipoFascia"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>FasceIxCeResponse</returns>
+        FasceIxCeResponse GetFasceIxCeContrattoClienteFinale (string tipoFascia, string xAuthorization);
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXCE e contratto cliente standard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tipoFascia"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of FasceIxCeResponse</returns>
+        ApiResponse<FasceIxCeResponse> GetFasceIxCeContrattoClienteFinaleWithHttpInfo (string tipoFascia, string xAuthorization);
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente standard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>FasceIxResponse</returns>
+        FasceIxResponse GetFasceIxFeContrattoClienteFinale (string xAuthorization);
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente standard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of FasceIxResponse</returns>
+        ApiResponse<FasceIxResponse> GetFasceIxFeContrattoClienteFinaleWithHttpInfo (string xAuthorization);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Elenca i contratti disponibili
+        /// Recupera i contratti disponibili
         /// </summary>
         /// <remarks>
         /// 
@@ -83,7 +152,7 @@ namespace IO.Swagger.Api
         System.Threading.Tasks.Task<ElencoContrattiResponse> ElencoContrattiAsync (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization, string stato = null, string filter = null, int? skip = null, int? take = null, string sortedBy = null, string sortDirection = null);
 
         /// <summary>
-        /// Elenca i contratti disponibili
+        /// Recupera i contratti disponibili
         /// </summary>
         /// <remarks>
         /// 
@@ -100,6 +169,75 @@ namespace IO.Swagger.Api
         /// <param name="sortDirection">Direzione di ordinamento (asc, desc) (optional)</param>
         /// <returns>Task of ApiResponse (ElencoContrattiResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ElencoContrattiResponse>> ElencoContrattiAsyncWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization, string stato = null, string filter = null, int? skip = null, int? take = null, string sortedBy = null, string sortDirection = null);
+        /// <summary>
+        /// Recupera i clienti del rivenditore e distributore
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoDistributore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ClientiResponseV2</returns>
+        System.Threading.Tasks.Task<ClientiResponseV2> GetClientiAsync (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization);
+
+        /// <summary>
+        /// Recupera i clienti del rivenditore e distributore
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoDistributore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (ClientiResponseV2)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ClientiResponseV2>> GetClientiAsyncWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization);
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXCE e contratto cliente standard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tipoFascia"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of FasceIxCeResponse</returns>
+        System.Threading.Tasks.Task<FasceIxCeResponse> GetFasceIxCeContrattoClienteFinaleAsync (string tipoFascia, string xAuthorization);
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXCE e contratto cliente standard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tipoFascia"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (FasceIxCeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FasceIxCeResponse>> GetFasceIxCeContrattoClienteFinaleAsyncWithHttpInfo (string tipoFascia, string xAuthorization);
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente standard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of FasceIxResponse</returns>
+        System.Threading.Tasks.Task<FasceIxResponse> GetFasceIxFeContrattoClienteFinaleAsync (string xAuthorization);
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente standard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (FasceIxResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FasceIxResponse>> GetFasceIxFeContrattoClienteFinaleAsyncWithHttpInfo (string xAuthorization);
         #endregion Asynchronous Operations
     }
 
@@ -201,7 +339,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Elenca i contratti disponibili 
+        /// Recupera i contratti disponibili 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identificativoRivenditore">Identificativo rivenditore</param>
@@ -221,7 +359,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Elenca i contratti disponibili 
+        /// Recupera i contratti disponibili 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identificativoRivenditore">Identificativo rivenditore</param>
@@ -300,7 +438,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Elenca i contratti disponibili 
+        /// Recupera i contratti disponibili 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identificativoRivenditore">Identificativo rivenditore</param>
@@ -321,7 +459,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Elenca i contratti disponibili 
+        /// Recupera i contratti disponibili 
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="identificativoRivenditore">Identificativo rivenditore</param>
@@ -397,6 +535,459 @@ namespace IO.Swagger.Api
             return new ApiResponse<ElencoContrattiResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ElencoContrattiResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ElencoContrattiResponse)));
+        }
+
+        /// <summary>
+        /// Recupera i clienti del rivenditore e distributore 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoDistributore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ClientiResponseV2</returns>
+        public ClientiResponseV2 GetClienti (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization)
+        {
+             ApiResponse<ClientiResponseV2> localVarResponse = GetClientiWithHttpInfo(identificativoRivenditore, identificativoDistributore, xAuthorization);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Recupera i clienti del rivenditore e distributore 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoDistributore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of ClientiResponseV2</returns>
+        public ApiResponse< ClientiResponseV2 > GetClientiWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization)
+        {
+            // verify the required parameter 'identificativoRivenditore' is set
+            if (identificativoRivenditore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoRivenditore' when calling AnagraficheContrattiApi->GetClienti");
+            // verify the required parameter 'identificativoDistributore' is set
+            if (identificativoDistributore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoDistributore' when calling AnagraficheContrattiApi->GetClienti");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AnagraficheContrattiApi->GetClienti");
+
+            var localVarPath = "/api/v2/contratti/rivenditori/{identificativoRivenditore}/distributori/{identificativoDistributore}/clienti";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (identificativoRivenditore != null) localVarPathParams.Add("identificativoRivenditore", this.Configuration.ApiClient.ParameterToString(identificativoRivenditore)); // path parameter
+            if (identificativoDistributore != null) localVarPathParams.Add("identificativoDistributore", this.Configuration.ApiClient.ParameterToString(identificativoDistributore)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetClienti", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ClientiResponseV2>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ClientiResponseV2) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClientiResponseV2)));
+        }
+
+        /// <summary>
+        /// Recupera i clienti del rivenditore e distributore 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoDistributore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ClientiResponseV2</returns>
+        public async System.Threading.Tasks.Task<ClientiResponseV2> GetClientiAsync (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization)
+        {
+             ApiResponse<ClientiResponseV2> localVarResponse = await GetClientiAsyncWithHttpInfo(identificativoRivenditore, identificativoDistributore, xAuthorization);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Recupera i clienti del rivenditore e distributore 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identificativoRivenditore"></param>
+        /// <param name="identificativoDistributore"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (ClientiResponseV2)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ClientiResponseV2>> GetClientiAsyncWithHttpInfo (Guid? identificativoRivenditore, Guid? identificativoDistributore, string xAuthorization)
+        {
+            // verify the required parameter 'identificativoRivenditore' is set
+            if (identificativoRivenditore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoRivenditore' when calling AnagraficheContrattiApi->GetClienti");
+            // verify the required parameter 'identificativoDistributore' is set
+            if (identificativoDistributore == null)
+                throw new ApiException(400, "Missing required parameter 'identificativoDistributore' when calling AnagraficheContrattiApi->GetClienti");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AnagraficheContrattiApi->GetClienti");
+
+            var localVarPath = "/api/v2/contratti/rivenditori/{identificativoRivenditore}/distributori/{identificativoDistributore}/clienti";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (identificativoRivenditore != null) localVarPathParams.Add("identificativoRivenditore", this.Configuration.ApiClient.ParameterToString(identificativoRivenditore)); // path parameter
+            if (identificativoDistributore != null) localVarPathParams.Add("identificativoDistributore", this.Configuration.ApiClient.ParameterToString(identificativoDistributore)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetClienti", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ClientiResponseV2>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ClientiResponseV2) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ClientiResponseV2)));
+        }
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXCE e contratto cliente standard 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tipoFascia"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>FasceIxCeResponse</returns>
+        public FasceIxCeResponse GetFasceIxCeContrattoClienteFinale (string tipoFascia, string xAuthorization)
+        {
+             ApiResponse<FasceIxCeResponse> localVarResponse = GetFasceIxCeContrattoClienteFinaleWithHttpInfo(tipoFascia, xAuthorization);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXCE e contratto cliente standard 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tipoFascia"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of FasceIxCeResponse</returns>
+        public ApiResponse< FasceIxCeResponse > GetFasceIxCeContrattoClienteFinaleWithHttpInfo (string tipoFascia, string xAuthorization)
+        {
+            // verify the required parameter 'tipoFascia' is set
+            if (tipoFascia == null)
+                throw new ApiException(400, "Missing required parameter 'tipoFascia' when calling AnagraficheContrattiApi->GetFasceIxCeContrattoClienteFinale");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AnagraficheContrattiApi->GetFasceIxCeContrattoClienteFinale");
+
+            var localVarPath = "/api/v2/contratti/clientestandard/fasceixce/{tipoFascia}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (tipoFascia != null) localVarPathParams.Add("tipoFascia", this.Configuration.ApiClient.ParameterToString(tipoFascia)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetFasceIxCeContrattoClienteFinale", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FasceIxCeResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (FasceIxCeResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FasceIxCeResponse)));
+        }
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXCE e contratto cliente standard 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tipoFascia"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of FasceIxCeResponse</returns>
+        public async System.Threading.Tasks.Task<FasceIxCeResponse> GetFasceIxCeContrattoClienteFinaleAsync (string tipoFascia, string xAuthorization)
+        {
+             ApiResponse<FasceIxCeResponse> localVarResponse = await GetFasceIxCeContrattoClienteFinaleAsyncWithHttpInfo(tipoFascia, xAuthorization);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXCE e contratto cliente standard 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tipoFascia"></param>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (FasceIxCeResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<FasceIxCeResponse>> GetFasceIxCeContrattoClienteFinaleAsyncWithHttpInfo (string tipoFascia, string xAuthorization)
+        {
+            // verify the required parameter 'tipoFascia' is set
+            if (tipoFascia == null)
+                throw new ApiException(400, "Missing required parameter 'tipoFascia' when calling AnagraficheContrattiApi->GetFasceIxCeContrattoClienteFinale");
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AnagraficheContrattiApi->GetFasceIxCeContrattoClienteFinale");
+
+            var localVarPath = "/api/v2/contratti/clientestandard/fasceixce/{tipoFascia}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (tipoFascia != null) localVarPathParams.Add("tipoFascia", this.Configuration.ApiClient.ParameterToString(tipoFascia)); // path parameter
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetFasceIxCeContrattoClienteFinale", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FasceIxCeResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (FasceIxCeResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FasceIxCeResponse)));
+        }
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente standard 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>FasceIxResponse</returns>
+        public FasceIxResponse GetFasceIxFeContrattoClienteFinale (string xAuthorization)
+        {
+             ApiResponse<FasceIxResponse> localVarResponse = GetFasceIxFeContrattoClienteFinaleWithHttpInfo(xAuthorization);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente standard 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>ApiResponse of FasceIxResponse</returns>
+        public ApiResponse< FasceIxResponse > GetFasceIxFeContrattoClienteFinaleWithHttpInfo (string xAuthorization)
+        {
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AnagraficheContrattiApi->GetFasceIxFeContrattoClienteFinale");
+
+            var localVarPath = "/api/v2/contratti/clientestandard/fasceixfe";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetFasceIxFeContrattoClienteFinale", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FasceIxResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (FasceIxResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FasceIxResponse)));
+        }
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente standard 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of FasceIxResponse</returns>
+        public async System.Threading.Tasks.Task<FasceIxResponse> GetFasceIxFeContrattoClienteFinaleAsync (string xAuthorization)
+        {
+             ApiResponse<FasceIxResponse> localVarResponse = await GetFasceIxFeContrattoClienteFinaleAsyncWithHttpInfo(xAuthorization);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Recupera le fasce disponibili per il modulo IXFE e contratto cliente standard 
+        /// </summary>
+        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAuthorization">access_token</param>
+        /// <returns>Task of ApiResponse (FasceIxResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<FasceIxResponse>> GetFasceIxFeContrattoClienteFinaleAsyncWithHttpInfo (string xAuthorization)
+        {
+            // verify the required parameter 'xAuthorization' is set
+            if (xAuthorization == null)
+                throw new ApiException(400, "Missing required parameter 'xAuthorization' when calling AnagraficheContrattiApi->GetFasceIxFeContrattoClienteFinale");
+
+            var localVarPath = "/api/v2/contratti/clientestandard/fasceixfe";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/json",
+                "application/xml",
+                "text/xml"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (xAuthorization != null) localVarHeaderParams.Add("X-Authorization", this.Configuration.ApiClient.ParameterToString(xAuthorization)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetFasceIxFeContrattoClienteFinale", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<FasceIxResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (FasceIxResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FasceIxResponse)));
         }
 
     }

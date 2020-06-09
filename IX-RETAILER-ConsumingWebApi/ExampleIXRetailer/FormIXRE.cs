@@ -129,7 +129,7 @@ namespace ExampleIXRetailer
                 // creo il cliente sul contratto. Direttamente IX RETAILER creerà anche l'AOO del cliente
                 IO.Swagger.Model.AooRequest aooRequest = new IO.Swagger.Model.AooRequest
                     (
-                        new IO.Swagger.Model.SedeLegaleAoo("P.IVA", "Ragione Sociale", "Via", "Civico", "Comune", "email", "telefono"),
+                        new IO.Swagger.Model.SedeLegaleAoo("P.IVA", "Ragione Sociale", "Via", "Civico", comuni[0].Id, "email", "telefono"),
                         new IO.Swagger.Model.DatiFiscaliAoo("Codice Fiscale", "Registro imprese", "Codice REA", "mail PEC"),
                         new IO.Swagger.Model.LegaleRappresentanteAoo("Nome", "Cognome", "Codice fiscale", "Cittadinanza")
                     );

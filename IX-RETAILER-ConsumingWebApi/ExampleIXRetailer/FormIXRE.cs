@@ -183,6 +183,11 @@ namespace ExampleIXRetailer
                 listaUtentiAoo.Add(identificativoUtente);
                 contrattiAoosUtentiApi.InsertAooUtenti(identificativoContratto, identificativoAoo, listaUtentiAoo, _authToken);
 
+                //salvo il contratto lato server
+                IO.Swagger.Model.ContrattoSaveRequest contrattoSaveRequest = new IO.Swagger.Model.ContrattoSaveRequest(IO.Swagger.Model.ContrattoSaveRequest.TipoSalvataggioEnum.CREA);
+                contrattiApi.SaveContratto(identificativoContratto, contrattoSaveRequest, _authToken);
+
+
                 //Download PDF del contratto
                 Stream contrattoStream = contrattiApi.GetCartaceoContratto(identificativoContratto, _authToken);
 

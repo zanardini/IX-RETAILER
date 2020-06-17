@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace ExampleIXRetailer
@@ -106,6 +107,7 @@ namespace ExampleIXRetailer
                     var tipoFascia = fasciaIxCe.TipoFascia;
                 }
 
+
                 //Recupera i comuni
                 List<IO.Swagger.Model.ComuneResponse> comuni = anagraficheApi.GetComuni("Brescia", _authToken).Comuni;
                 //Recupera i paesi
@@ -190,6 +192,13 @@ namespace ExampleIXRetailer
 
                 //Download PDF del contratto
                 Stream contrattoStream = contrattiApi.GetCartaceoContratto(identificativoContratto, _authToken);
+                var destPath = @"c:\temp\MyContract.zip";
+                if (File.Exists(destPath))
+                    File.Delete(destPath);
+                using (var fileStream = new FileStream(destPath, FileMode.Create, FileAccess.Write))
+                {
+                    contrattoStream.CopyTo(fileStream);
+                }
 
                 //Upload del contratto PDF firmato
                 contrattiApi.UploadControfirmato(identificativoContratto, contrattoStream, _authToken);
@@ -230,13 +239,9 @@ namespace ExampleIXRetailer
                 List<IO.Swagger.Model.ContrattoInfo> contratti = elencoContrattiResponse.Contratti;
                 var ResultCount = elencoContrattiResponse.ResultCount;
 
-
-
-
                 IO.Swagger.Model.CreateContrattoRequest requestContrattoPerAggiuntaDitte = new IO.Swagger.Model.CreateContrattoRequest("Aggiunta ditta 1", "", rivenditore.Identificativo, distributore.Identificativo);
                 IO.Swagger.Model.CreateContrattoResponse responseContrattoPerAggiuntaDitte = creazioneContrattoApi.CreateContrattoAggiuntaDitte(Guid.Parse(identificativoCliente), requestContrattoPerAggiuntaDitte, _authToken);
                 //id contratto per creazione ditte: responseContrattoPerAggiuntaDitte.Identificativo;
-
 
             }
             catch (Exception ex)
